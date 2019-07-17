@@ -20,7 +20,12 @@ function extract_cluster_directory {
    sudo docker run --rm -v $(pwd):/data:z -e LICENSE=accept --security-opt label:disable ibmcom/icp-inception-amd64:3.2.0-rhel-ee cp -r cluster /data
 }
 
+function copy_kubeconfig {
+  cp ~/.kube/config cluster/kubeconfig
+}
+
 #install_docker
 #extract_images
 create_install_directory
-extract_cluster_directory
+#extract_cluster_directory
+copy_kubeconfig
