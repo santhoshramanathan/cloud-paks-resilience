@@ -13,7 +13,6 @@ function extract_images {
 
 function create_install_directory {
   mkdir -p $INSTALL_DIR
-  cd $INSTALL_DIR
 }
 
 function extract_cluster_directory {
@@ -24,8 +23,16 @@ function copy_kubeconfig {
   cp ~/.kube/config cluster/kubeconfig
 }
 
+function copy_config {
+  cp config.yaml $INSTALL_DIR/cluster
+}
+
 #install_docker
 #extract_images
-create_install_directory
+#create_install_directory
+
+cd $INSTALL_DIR
+
 #extract_cluster_directory
-copy_kubeconfig
+#copy_kubeconfig
+copy_config
