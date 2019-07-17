@@ -1,4 +1,5 @@
 INSTALL_DIR=/opt/ibm-cloud-private-rhos-3.2.0
+CUR_DIR=`pwd`
 
 function install_docker {
   echo Installing docker
@@ -24,7 +25,7 @@ function copy_kubeconfig {
 }
 
 function copy_config {
-  cp config.yaml $INSTALL_DIR/cluster
+  cp $CUR_DIR/config.yaml $INSTALL_DIR/cluster
 }
 
 #install_docker
