@@ -11,8 +11,13 @@ function extract_images () {
   tar xf $IMAGES/ibm-cloud-private-rhos-3.2.0.tar.gz -O | sudo docker load
 }
 
+function create_install_directory {
+  mkdir $INSTALL_DIR
+  cd $INSTALL_DIR
+}
+
 #install_docker
 #extract_images
+create_install_directory
 
-mkdir $INSTALL_DIR
-cd $INSTALL_DIR
+pwd
