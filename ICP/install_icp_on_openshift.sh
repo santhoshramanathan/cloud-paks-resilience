@@ -1,10 +1,18 @@
+INSTALL_DIR=/opt/ibm-cloud-private-rhos-3.2.0
+
 function install_docker () {
   echo Installing docker
   yum install -y docker
   systemctl start docker
 }
 
-install_docker
+function extract_images () {
+  echo Images directory: $IMAGES
+  tar xf $IMAGES/ibm-cloud-private-rhos-3.2.0.tar.gz -O | sudo docker load
+}
 
-echo Images directory: $IMAGES
-tar xf $IMAGES/ibm-cloud-private-rhos-3.2.0.tar.gz -O | sudo docker load
+#install_docker
+#extract_images
+
+mkdir $INSTALL_DIR
+cd $INSTALL_DIR
