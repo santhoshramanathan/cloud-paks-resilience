@@ -28,7 +28,7 @@ function copy_config {
   cp $CUR_DIR/config.yaml $INSTALL_DIR/cluster
 }
 
-function instal_icp {
+function install_icp {
   sudo docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z -v /var/run:/var/run:z --security-opt label:disable ibmcom/icp-inception-amd64:3.2.0-rhel-ee install-with-openshift
 }
 
