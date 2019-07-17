@@ -22,5 +22,5 @@ function extract_cluster_directory {
 
 #install_docker
 #extract_images
-#create_install_directory
+create_install_directory
 extract_cluster_directory
