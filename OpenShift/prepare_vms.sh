@@ -60,8 +60,9 @@ function start_docker {
   systemctl start docker
 }
 
-function install_network_manager {
-  yum install -y NetworkManager
+function enable_network_manager {
+  service NetworkManager start
+  chekconfig NetworkManager on
 }
 
 #change_certificate
@@ -73,4 +74,4 @@ function install_network_manager {
 #stop_docker
 #configure_docker_storage
 #start_docker
-install_network_manager
+enable_network_manager
