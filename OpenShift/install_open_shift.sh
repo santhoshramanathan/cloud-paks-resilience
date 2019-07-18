@@ -3,7 +3,7 @@ function register_host {
 }
 
 function find_pool_ID {
-  POOL_ID=2c9a01226880d2d50168811685400be5
+  POOL_ID=2c9a01226880d2d50168811685070bcf
 }
 
 function attach_pool_ID {
