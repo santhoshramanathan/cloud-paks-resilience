@@ -11,5 +11,10 @@ function enable_yum_repos {
 yum update -y
 }
 
-install_subscriptions
-enable_yum_repos
+function install_packages {
+  yum install -y wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct glusterfs-fuse
+}
+
+#install_subscriptions
+#enable_yum_repos
+install_packages
