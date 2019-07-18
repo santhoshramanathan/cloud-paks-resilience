@@ -15,6 +15,11 @@ function install_packages {
   yum install -y wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct glusterfs-fuse
 }
 
+function install_docker {
+  yum install -y docker-1.13.1
+}
+
 #install_subscriptions
 #enable_yum_repos
-install_packages
+#install_packages
+install_docker
