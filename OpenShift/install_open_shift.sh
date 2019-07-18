@@ -10,6 +10,11 @@ function attach_pool_ID {
   subscription-manager attach --pool=$POOL_ID
 }
 
+function disable_yum_repos {
+  subscription-manager repos --disable="*"
+}
+
 #register_host
-find_pool_ID
-attach_pool_ID
+#find_pool_ID
+#attach_pool_ID
+disable_yum_repos
