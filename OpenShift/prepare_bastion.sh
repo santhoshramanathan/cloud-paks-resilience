@@ -11,7 +11,7 @@ function copy_key {
 }
 
 function install_ansible {
-  yum install -y openshift-ansible
+  yum install -y openshift-ansible:2.5.5
 }
 
 
