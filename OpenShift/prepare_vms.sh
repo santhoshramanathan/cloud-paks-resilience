@@ -22,8 +22,13 @@ function enable_OpenShift_repo {
     --enable="rhel-7-server-ansible-2.6-rpms"
 }
 
-register_host
-find_pool_ID
-attach_pool_ID
-disable_yum_repos
-enable_OpenShift_repo
+function install_atomic {
+  yum install atomic
+}
+
+#register_host
+#find_pool_ID
+#attach_pool_ID
+#disable_yum_repos
+#enable_OpenShift_repo
+install_atomic
