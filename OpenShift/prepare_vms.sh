@@ -1,4 +1,12 @@
-export POOL_ID=2c9a01226880d2d50168811685070bcf
+export POOL_ID=8a85f99967a2c0880167af1b2ded5d33
+
+function register_satellite {
+  subscription-manager unregister
+  subscription-manager register --username=$REDHAT_USER --password=$REDHAT_PASSWORD \
+   --serverurl=https://subscription.rhsm.redhat.com:443/subscription \
+   --baseurl=https://cdn.redhat.com --force
+}
+
 
 function install_subscriptions {
   subscription-manager repos --disable="*"
@@ -43,10 +51,11 @@ function start_docker {
   systemctl start docker
 }
 
+register_satellite
 install_subscriptions
 enable_yum_repos
-install_packages
-install_docker
-stop_docker
-configure_docker_storage
-start_docker
+#install_packages
+#install_docker
+#stop_docker
+#configure_docker_storage
+#start_docker
