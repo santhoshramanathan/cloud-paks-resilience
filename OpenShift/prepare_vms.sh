@@ -29,6 +29,7 @@ CONTAINER_ROOT_LV_MOUNT_PATH=/var/lib/docker
 VG=dockervg
 EOF
 
+  WIPE_SIGNATURES=true
   docker-storage-setup
 }
 
