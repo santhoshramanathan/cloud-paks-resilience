@@ -1,3 +1,5 @@
+export POOL_ID=2c9a01226880d2d50168811685070bcf
+
 function create_ssh_key {
   ssh-keygen -t rsa -P ''
 }
@@ -10,5 +12,12 @@ function copy_key {
   done
 }
 
+function install_subscriptions {
+  subscription-manager repos --disable="*"
+  subscription-manager refresh
+  subscription-manager attach --pool=$POOL_ID  
+}
+
 #create_ssh_key
-copy_key
+#copy_key
+install_subscriptions
