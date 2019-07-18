@@ -20,7 +20,7 @@ function install_docker {
 }
 
 function configure_docker_storage {
-  cat > /etc/sysconfig/docker-storage-config <<EOF
+  cat > /etc/sysconfig/docker-storage <<EOF
 STORAGE_DRIVER=overlay2
 DEVS=/dev/xvdb
 CONTAINER_ROOT_LV_NAME=dockerlv
@@ -39,5 +39,5 @@ function start_docker {
 #enable_yum_repos
 #install_packages
 #install_docker
-#configure_docker_storage
+configure_docker_storage
 start_docker
