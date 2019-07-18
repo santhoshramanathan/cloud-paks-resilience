@@ -20,7 +20,7 @@ function install_docker {
 }
 
 function configure_docker_storage {
-  cat > /etc/sysconfig/docker-storage <<EOF
+  cat > /etc/sysconfig/docker-storage-setup <<EOF
 STORAGE_DRIVER=overlay2
 DEVS=/dev/xvdb
 CONTAINER_ROOT_LV_NAME=dockerlv
@@ -28,6 +28,8 @@ CONTAINER_ROOT_LV_SIZE=100%FREE
 CONTAINER_ROOT_LV_MOUNT_PATH=/var/lib/docker
 VG=dockervg
 EOF
+
+  docker-storage-setup
 }
 
 function stop_docker {
@@ -46,4 +48,4 @@ function start_docker {
 install_docker
 stop_docker
 configure_docker_storage
-start_docker
+#start_docker
