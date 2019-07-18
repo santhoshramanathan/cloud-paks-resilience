@@ -30,7 +30,12 @@ VG=dockervg
 EOF
 }
 
+function stop_docker {
+  systemctl stop docker
+}
+
 function start_docker {
+  systemctl daemon-reload
   systemctl enable docker
   systemctl start docker
 }
@@ -39,5 +44,6 @@ function start_docker {
 #enable_yum_repos
 #install_packages
 #install_docker
+stop_docker
 configure_docker_storage
 start_docker
