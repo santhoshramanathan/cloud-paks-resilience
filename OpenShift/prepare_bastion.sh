@@ -7,6 +7,7 @@ function copy_key {
   do
     echo Copying to $m
     ssh-copy-id -i ~/.ssh/id_rsa.pub root@$m.patrocinio.org
+  done
 }
 
 #create_ssh_key
