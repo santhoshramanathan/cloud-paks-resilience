@@ -4,7 +4,6 @@ function configure_credentials {
 }
 
 function install_prereqs {
-  cd /usr/share/ansible/openshift-ansible
   ansible-playbook playbooks/prerequisites.yml
 }
 
@@ -13,5 +12,6 @@ function deploy_cluster {
 }
 
 #configure_credentials
+cd /usr/share/ansible/openshift-ansible
 #install_prereqs
 deploy_cluster
