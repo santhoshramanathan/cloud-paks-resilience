@@ -8,5 +8,10 @@ function install_prereqs {
   ansible-playbook playbooks/prerequisites.yml
 }
 
-configure_credentials
-install_prereqs
+function deploy_cluster {
+  ansible-playbook playbooks/deploy_cluster.yml
+}
+
+#configure_credentials
+#install_prereqs
+deploy_cluster

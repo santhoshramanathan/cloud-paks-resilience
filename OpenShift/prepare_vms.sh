@@ -60,10 +60,14 @@ function start_docker {
   systemctl start docker
 }
 
-change_certificate
-register_satellite
-install_subscriptions
-enable_yum_repos
+function install_network_manager {
+  yum install -y NetworkManager
+}
+
+#change_certificate
+#register_satellite
+#install_subscriptions
+#enable_yum_repos
 #install_packages
 #install_docker
 #stop_docker
