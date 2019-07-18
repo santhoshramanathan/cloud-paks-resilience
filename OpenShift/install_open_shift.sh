@@ -23,7 +23,7 @@ function enable_OpenShift_repo {
 }
 
 #register_host
-#find_pool_ID
+find_pool_ID
 attach_pool_ID
 #disable_yum_repos
 enable_OpenShift_repo
