@@ -3,7 +3,7 @@ function register_host {
 }
 
 function find_pool_ID {
-  subscription-manager list --available --matches '*OpenShift*'
+  POOL_ID=2c9a01226880d2d50168811685400be5
 }
 
 register_host
