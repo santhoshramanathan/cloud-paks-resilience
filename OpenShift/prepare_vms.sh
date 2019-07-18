@@ -62,7 +62,7 @@ function start_docker {
 
 function enable_network_manager {
   service NetworkManager start
-  chekconfig NetworkManager on
+  chkconfig NetworkManager on
 }
 
 #change_certificate
