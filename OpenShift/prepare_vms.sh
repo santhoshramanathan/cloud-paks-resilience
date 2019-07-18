@@ -18,8 +18,8 @@ function install_subscriptions {
 function enable_yum_repos {
   subscription-manager repos --enable="rhel-7-server-rpms" \
     --enable="rhel-7-server-extras-rpms" --enable="rhel-7-server-ose-3.11-rpms" \
-    --enable="rhel-7-server-ansible-2.6-rpms"
-#    --enable="rh-gluster-3-client-for-rhel-7-server-rpms"
+    --enable="rhel-7-server-ansible-2.6-rpms" \
+    --enable="rh-gluster-3-client-for-rhel-7-server-rpms"
   yum update -y
 }
 
