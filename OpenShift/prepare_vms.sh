@@ -73,3 +73,4 @@ function install_network_manager {
 #stop_docker
 #configure_docker_storage
 #start_docker
+install_network_manager
