@@ -1,4 +1,5 @@
-export POOL_ID=8a85f99967a2c0880167af1b2ded5d33
+#export POOL_ID=8a85f99967a2c0880167af1b2ded5d33
+export POOL_ID=8a85f9996b49869e016bbca2b0e21edf
 
 function register_satellite {
   subscription-manager unregister
@@ -15,7 +16,10 @@ function install_subscriptions {
 }
 
 function enable_yum_repos {
-  subscription-manager repos --enable="rhel-7-server-rpms" --enable="rhel-7-server-extras-rpms" --enable="rhel-7-server-ose-3.11-rpms" --enable="rhel-7-server-ansible-2.6-rpms" --enable="rh-gluster-3-client-for-rhel-7-server-rpms"
+  subscription-manager repos --enable="rhel-7-server-rpms" \
+    --enable="rhel-7-server-extras-rpms" --enable="rhel-7-server-ose-3.11-rpms" \
+    --enable="rhel-7-server-ansible-2.6-rpms" \
+    --enable="rh-gluster-3-client-for-rhel-7-server-rpms"
 yum update -y
 }
 
