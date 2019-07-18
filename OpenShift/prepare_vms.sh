@@ -65,6 +65,11 @@ function enable_network_manager {
   chkconfig NetworkManager on
 }
 
+function set_selinux_enforcing {
+  sed -i s/^SELINUX=.*$/SELINUX=permissive/ /etc/selinux/config
+  setenforce Enforcing
+}
+
 #change_certificate
 #register_satellite
 #install_subscriptions
@@ -74,4 +79,5 @@ function enable_network_manager {
 #stop_docker
 #configure_docker_storage
 #start_docker
-enable_network_manager
+#enable_network_manager
+set_selinux_enforcing
