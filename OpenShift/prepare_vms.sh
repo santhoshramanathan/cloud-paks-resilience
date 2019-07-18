@@ -19,7 +19,19 @@ function install_docker {
   yum install -y docker-1.13.1
 }
 
+function configure_docker_storage {
+  cat > /etc/sysconfig/docker-storage-config <<EOF
+STORAGE_DRIVER=overlay2
+DEVS=/dev/xvdb
+CONTAINER_ROOT_LV_NAME=dockerlv
+CONTAINER_ROOT_LV_SIZE=100%FREE
+CONTAINER_ROOT_LV_MOUNT_PATH=/var/lib/docker
+VG=dockervg
+EOF
+}
+
 #install_subscriptions
 #enable_yum_repos
 #install_packages
-install_docker
+#install_docker
+configure_docker_storage
