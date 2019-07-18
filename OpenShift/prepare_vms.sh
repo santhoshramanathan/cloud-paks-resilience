@@ -1,13 +1,18 @@
 #export POOL_ID=8a85f99967a2c0880167af1b2ded5d33
 export POOL_ID=8a85f9996b49869e016bbca2b0e21edf
 
+function change_certificate {
+  cd /etc/rhsm/ca
+  cp katello-server-ca.pem katello-server-ca.pem.original
+  cp redhat-uep.pem katello-server-ca.pem
+}
+
 function register_satellite {
   subscription-manager unregister
   subscription-manager register --username=$REDHAT_USER --password=$REDHAT_PASSWORD \
    --serverurl=https://subscription.rhsm.redhat.com:443/subscription \
    --baseurl=https://cdn.redhat.com --force
 }
-
 
 function install_subscriptions {
   subscription-manager repos --disable="*"
@@ -55,6 +60,7 @@ function start_docker {
   systemctl start docker
 }
 
+change_certificate
 register_satellite
 install_subscriptions
 enable_yum_repos
