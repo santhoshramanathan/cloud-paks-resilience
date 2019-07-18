@@ -1,5 +1,3 @@
-export POOL_ID=2c9a01226880d2d50168811685070bcf
-
 function create_ssh_key {
   ssh-keygen -t rsa -P ''
 }
@@ -13,7 +11,7 @@ function copy_key {
 }
 
 function install_ansible {
-  yum install -y openshift-ansible
+  yum install -y ansible
 }
 
 #create_ssh_key
