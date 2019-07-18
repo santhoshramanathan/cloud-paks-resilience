@@ -43,7 +43,7 @@ function start_docker {
 #install_subscriptions
 #enable_yum_repos
 #install_packages
-#install_docker
+install_docker
 stop_docker
 configure_docker_storage
 start_docker
