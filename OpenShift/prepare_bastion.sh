@@ -12,5 +12,10 @@ function copy_key {
   done
 }
 
+function install_ansible {
+  yum install -y openshift-ansible
+}
+
 #create_ssh_key
 #copy_key
+install_ansible
