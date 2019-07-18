@@ -8,5 +8,5 @@ function install_prereqs {
   ansible-playbook playbooks/prerequisites.yml
 }
 
-#configure_credentials
+configure_credentials
 install_prereqs
