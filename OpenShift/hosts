@@ -12,6 +12,7 @@ glusterfs
 ansible_ssh_user=root
 openshift_deployment_type=openshift-enterprise
 openshift_release=v3.11
+openshift_use_crio=false
 
 # Replace the bit in brackets (<>) with your redhat subscription credentials
 oreg_auth_user=REDHAT_USER
