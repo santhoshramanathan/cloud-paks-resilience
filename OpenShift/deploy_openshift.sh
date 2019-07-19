@@ -8,7 +8,7 @@ function install_prereqs {
 }
 
 function deploy_cluster {
-  ansible-playbook playbooks/deploy_cluster.yml
+  ansible-playbook playbooks/deploy_cluster.yml 2>&1 | tee /tmp/deploy.log
 }
 
 configure_credentials
