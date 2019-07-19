@@ -11,10 +11,10 @@ function deploy_cluster {
   ansible-playbook playbooks/deploy_cluster.yml 2>&1 | tee /tmp/deploy.log
 }
 
-configure_credentials
+#configure_credentials
 cd /usr/share/ansible/openshift-ansible
-install_prereqs
-#deploy_cluster
+#install_prereqs
+deploy_cluster
 
 
 # echo "namesever 8.8.8.8" >  /etc/origin/node/resolv.conf
