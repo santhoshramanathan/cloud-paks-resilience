@@ -39,7 +39,7 @@ function install_docker {
 function configure_docker_storage {
   cat > /etc/sysconfig/docker-storage-setup <<EOF
 STORAGE_DRIVER=overlay2
-DEVS=/dev/xvdb
+DEVS=/dev/xvdc
 CONTAINER_ROOT_LV_NAME=dockerlv
 CONTAINER_ROOT_LV_SIZE=100%FREE
 CONTAINER_ROOT_LV_MOUNT_PATH=/var/lib/docker

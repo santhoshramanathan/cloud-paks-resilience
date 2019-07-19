@@ -75,9 +75,9 @@ master.patrocinio.org openshift_ip=169.62.62.70
 # These shoudld be raw disks and have no partitions defined.  If you have multiple
 #  raw disks, use a comma separated list within each square bracket.
 [glusterfs]
-storage1.patrocinio.org glusterfs_ip=169.61.110.3 glusterfs_devices='[ "/dev/xvdc" ]'
-storage2.patrocinio.org glusterfs_ip=169.61.110.14 glusterfs_devices='[ "/dev/xvdc" ]'
-storage3.patrocinio.org glusterfs_ip=169.61.110.12 glusterfs_devices='[ "/dev/xvdc" ]'
+storage1.patrocinio.org glusterfs_ip=169.61.110.3 glusterfs_devices='[ "/dev/xvde" ]'
+storage2.patrocinio.org glusterfs_ip=169.61.110.14 glusterfs_devices='[ "/dev/xvde" ]'
+storage3.patrocinio.org glusterfs_ip=169.61.110.12 glusterfs_devices='[ "/dev/xvde" ]'
 
 # All nodes and their respective node types
 [nodes]
