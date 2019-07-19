@@ -14,7 +14,7 @@ function deploy_cluster {
 configure_credentials
 cd /usr/share/ansible/openshift-ansible
 install_prereqs
-deploy_cluster
+#deploy_cluster
 
 
 # echo "namesever 8.8.8.8" >  /etc/origin/node/resolv.conf
