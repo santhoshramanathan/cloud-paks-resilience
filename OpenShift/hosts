@@ -19,7 +19,7 @@ oreg_auth_user=REDHAT_USER
 oreg_auth_password=REDHAT_PASSWORD
 
 # This section defines htpasswd authentication.
-openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
+# openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
 # This file will exist on all master nodes and this file must be identical on all systems
 # It is recommended to add users to master1 and then copy to master2 and master3 in the same location
 # To add users, use the command htpasswd -c <filename> <username> and provide a password
