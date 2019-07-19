@@ -74,9 +74,9 @@ function remove_ip6_entries {
   sed -i "s/^::/#::/g" /etc/hosts
 }
 
-change_certificate
-register_satellite
-install_subscriptions
+#change_certificate
+#register_satellite
+#install_subscriptions
 enable_yum_repos
 install_packages
 install_docker
