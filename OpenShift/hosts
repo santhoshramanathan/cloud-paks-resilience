@@ -81,11 +81,11 @@ storage3.patrocinio.org glusterfs_ip=169.61.110.12 glusterfs_devices='[ "/dev/xv
 
 # All nodes and their respective node types
 [nodes]
-master.patrocinio.org openshift_node_group_name='node-config-master'
-worker1.patrocinio.org openshift_node_group_name='node-config-compute'
-worker2.patrocinio.org openshift_node_group_name='node-config-compute'
-worker3.patrocinio.org openshift_node_group_name='node-config-compute'
-infra.patrocinio.org openshift_node_group_name='node-config-infra'
-storage1.patrocinio.org openshift_node_group_name='node-config-compute'
-storage2.patrocinio.org openshift_node_group_name='node-config-compute'
-storage3.patrocinio.org openshift_node_group_name='node-config-compute'
+master.patrocinio.org openshift_node_group_name='node-config-master' openshift_public_ip='169.62.62.70'
+worker1.patrocinio.org openshift_node_group_name='node-config-compute' openshift_public_ip='169.61.110.10'
+worker2.patrocinio.org openshift_node_group_name='node-config-compute' openshift_public_ip='169.61.110.7'
+worker3.patrocinio.org openshift_node_group_name='node-config-compute' openshift_public_ip='169.61.110.13'
+infra.patrocinio.org openshift_node_group_name='node-config-infra' openshift_public_ip='169.61.110.5'
+storage1.patrocinio.org openshift_node_group_name='node-config-compute' openshift_public_ip='169.61.110.3'
+storage2.patrocinio.org openshift_node_group_name='node-config-compute' openshift_public_ip='169.61.110.14'
+storage3.patrocinio.org openshift_node_group_name='node-config-compute' openshift_public_ip='169.61.110.12'
