@@ -66,7 +66,7 @@ function enable_network_manager {
 }
 
 function set_selinux_enforcing {
-  sed -i s/^SELINUX=.*$/SELINUX=permissive/ /etc/selinux/config
+  sed -i s/^SELINUX=.*$/SELINUX=enforcing/ /etc/selinux/config
   setenforce Enforcing
 }
 
