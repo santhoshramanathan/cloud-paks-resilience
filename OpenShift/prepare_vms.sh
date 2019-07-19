@@ -75,9 +75,9 @@ function set_selinux_enforcing {
 #install_subscriptions
 #enable_yum_repos
 #install_packages
-#install_docker
-#stop_docker
-#configure_docker_storage
-#start_docker
+install_docker
+stop_docker
+configure_docker_storage
+start_docker
 #enable_network_manager
-set_selinux_enforcing
+#set_selinux_enforcing
