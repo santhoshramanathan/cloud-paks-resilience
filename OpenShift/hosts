@@ -57,12 +57,12 @@ openshift_storage_glusterfs_block_storageclass_default=true
 
 # host group for masters
 [masters]
-master.patrocinio.org
+master.patrocinio.org openshift_ip=169.62.62.70
 
 # If etcd should run on the master nodes, these nodes should be identical to the [masters] section above
 # If using separate etcd nodes, specify the hostnames of the etcd nodes here
 [etcd]
-master.patrocinio.org
+master.patrocinio.org openshift_ip=169.62.62.70
 
 # The value in the square brackets should indicate the raw disk to use for GlusterFS bricks.
 # These shoudld be raw disks and have no partitions defined.  If you have multiple
