@@ -46,7 +46,7 @@ CONTAINER_ROOT_LV_MOUNT_PATH=/var/lib/docker
 VG=dockervg
 EOF
 
-  wipefs --all --force /dev/xvdb
+  wipefs --all --force /dev/xvdc
   docker-storage-setup
 }
 

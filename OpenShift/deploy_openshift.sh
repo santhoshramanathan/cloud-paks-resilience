@@ -11,9 +11,9 @@ function deploy_cluster {
   ansible-playbook playbooks/deploy_cluster.yml 2>&1 | tee /tmp/deploy.log
 }
 
-#configure_credentials
+configure_credentials
 cd /usr/share/ansible/openshift-ansible
-#install_prereqs
+install_prereqs
 deploy_cluster
 
 
