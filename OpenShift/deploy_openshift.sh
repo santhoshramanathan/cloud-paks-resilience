@@ -13,7 +13,7 @@ function deploy_cluster {
 
 configure_credentials
 cd /usr/share/ansible/openshift-ansible
-install_prereqs
+#install_prereqs
 deploy_cluster
 
 
