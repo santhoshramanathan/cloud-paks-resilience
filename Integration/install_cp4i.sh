@@ -28,7 +28,7 @@ function unpackAPIC {
 
 function unpackAPICChart {
   cd charts
-  tar xzvf $APIC_CHART
+  tar xzvf --warning=no-timestamp $APIC_CHART
 }
 
 
