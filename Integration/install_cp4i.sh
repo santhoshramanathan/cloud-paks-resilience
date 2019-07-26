@@ -54,4 +54,4 @@ loadImages
 
 cd charts
 #generateYAMLs
-installAPIC
+#installAPIC
