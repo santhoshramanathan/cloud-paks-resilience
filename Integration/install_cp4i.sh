@@ -2,6 +2,7 @@ PROJECT=cp4i
 SCC=ibm-privileged-scc
 INSTALL_DIR=/root/Integration/install/installer_files/cluster/icipcontent
 APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Integration-Platform-1.0.0.tgz
+APIC_CHART=ibm-apiconnect-cip-prod-1.0.0.tgz
 WORK_DIR=/root/work
 
 function createProject {
@@ -14,17 +15,26 @@ function updateSCC {
   oc adm policy add-scc-to-user $SCC system:serviceaccounts:$PROJECT
 }
 
-function unpackAPIC {
+function createWorkDir {
   echo Creating work directory...
   mkdir -p $WORK_DIR
-  cd $WORK_DIR
+}
+
+function unpackAPIC {
 
   echo Unpacking API Connect...
   tar xzvf $INSTALL_DIR/$APIC
+}
+
+function unpackAPICChart {
+  cd chart
+  tar xzvf $APIC_CHART
 }
 
 
 
 # createProject
 # updateSCC
-unpackAPIC
+cd $WORK_DIR
+#unpackAPIC
+unpackAPICChart
