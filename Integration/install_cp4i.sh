@@ -28,14 +28,12 @@ function unpackAPIC {
 
 function generateYAMLs {
   cd charts
-  mkdir resources
+  mkdir -p resources
   helm template $APIC_CHART --namespace $PROJECT --name apic --output-dir resources
 }
 
-# deprecated
-function unpackAPICChart {
-  cd charts
-  tar xzvf $APIC_CHART --warning=no-timestamp
+function installAPIC {
+  oc apply --recursive --filename resources
 }
 
 
@@ -44,4 +42,5 @@ function unpackAPICChart {
 # updateSCC
 cd $WORK_DIR
 #unpackAPIC
-generateYAMLs
+#generateYAMLs
+installAPIC
