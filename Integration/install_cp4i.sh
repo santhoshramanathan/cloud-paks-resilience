@@ -27,7 +27,6 @@ function unpackAPIC {
 }
 
 function generateYAMLs {
-  cd charts
   mkdir -p resources
   helm template $APIC_CHART --namespace $PROJECT --name apic --output-dir resources
 }
@@ -40,7 +39,10 @@ function installAPIC {
 
 # createProject
 # updateSCC
+
 cd $WORK_DIR
 #unpackAPIC
+
+cd charts
 #generateYAMLs
 installAPIC
