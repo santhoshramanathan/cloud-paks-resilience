@@ -27,7 +27,7 @@ function unpackAPIC {
 }
 
 function unpackAPICChart {
-  cd chart
+  cd charts
   tar xzvf $APIC_CHART
 }
 
@@ -36,5 +36,5 @@ function unpackAPICChart {
 # createProject
 # updateSCC
 cd $WORK_DIR
-unpackAPIC
+#unpackAPIC
 unpackAPICChart
