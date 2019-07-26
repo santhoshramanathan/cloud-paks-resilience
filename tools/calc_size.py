@@ -1,6 +1,6 @@
-#!/bin/python
 import subprocess
 
+print "Calculating size"
 
 myCmd = 'kubectl top nodes | grep -v NAME'
 
