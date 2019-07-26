@@ -26,9 +26,16 @@ function unpackAPIC {
   tar xzvf $INSTALL_DIR/$APIC
 }
 
+function generateYAMLs {
+  cd charts
+  mkdir resources
+  helm template $APIC_CHART --namespace $PROJECT --name apic --output-dir resources
+}
+
+# deprecated
 function unpackAPICChart {
   cd charts
-  tar xzvf $APIC_CHART --warning=no-timestamp 
+  tar xzvf $APIC_CHART --warning=no-timestamp
 }
 
 
@@ -37,4 +44,4 @@ function unpackAPICChart {
 # updateSCC
 cd $WORK_DIR
 #unpackAPIC
-unpackAPICChart
+generateYAMLs
