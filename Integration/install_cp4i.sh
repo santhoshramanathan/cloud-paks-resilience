@@ -26,6 +26,14 @@ function unpackAPIC {
   tar xzvf $INSTALL_DIR/$APIC
 }
 
+function loadImages {
+  cd images
+  for i in *
+  do
+    echo Loading $i
+  done
+}
+
 function generateYAMLs {
   mkdir -p resources
   helm template $APIC_CHART --namespace $PROJECT --name apic --output-dir resources
@@ -42,6 +50,7 @@ function installAPIC {
 
 cd $WORK_DIR
 #unpackAPIC
+loadImages
 
 cd charts
 #generateYAMLs
