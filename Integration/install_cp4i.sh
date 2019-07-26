@@ -1,3 +1,3 @@
 PROJECT=cp4i
 
-oc create project $PROJECT
+oc new-project $PROJECT
