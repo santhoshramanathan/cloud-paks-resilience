@@ -31,6 +31,7 @@ function loadImages {
   for i in *
   do
     echo Loading $i
+    docker load $i
   done
   cd ..
 }
