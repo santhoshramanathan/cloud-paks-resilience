@@ -1,0 +1,1 @@
+wipefs -af /dev/xvde

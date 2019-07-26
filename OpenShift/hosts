@@ -61,6 +61,7 @@ openshift_storage_glusterfs_heketi_image=registry.redhat.io/rhgs3/rhgs-volmanage
 
 # SDN
 os_sdn_network_plugin_name=redhat/openshift-ovs-subnet
+osm_cluster_network_cidr=172.20.0.0/14
 
 # host group for masters
 [masters]
