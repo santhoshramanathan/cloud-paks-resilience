@@ -32,6 +32,7 @@ function loadImages {
   do
     echo Loading $i
   done
+  cd ..
 }
 
 function generateYAMLs {
