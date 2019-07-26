@@ -36,5 +36,5 @@ function unpackAPICChart {
 # createProject
 # updateSCC
 cd $WORK_DIR
-#unpackAPIC
+unpackAPIC
 unpackAPICChart
