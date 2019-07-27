@@ -73,7 +73,7 @@ cd $WORK_DIR
 #unpackAPIC
 #defineRegistry
 #dockerLogin
-#loadImages
+loadImages
 
 cd charts
 #generateYAMLs
