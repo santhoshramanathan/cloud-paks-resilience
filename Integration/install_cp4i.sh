@@ -30,6 +30,7 @@ function dockerLogin {
   # Save endpoint
   export INTERNAL_REG_HOST=`oc get route docker-registry --template='{{ .spec.host }}' -n default`
 
+  echo Docker Registry: $INTERNAL_REG_HOST
   # Login
   docker login -u `oc whoami` -p `oc whoami -t` $INTERNAL_REG_HOST
 }
