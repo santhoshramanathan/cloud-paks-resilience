@@ -1,4 +1,4 @@
-export IMAGE_DIR=/root/Data/images
+export IMAGE_DIR=/images/Data
 export WORK_DIR=/root/work_cp4d
 
 function download {
