@@ -48,6 +48,7 @@ function loadImages {
   cd ..
 }
 
+# Thjis function requires the defineRegistry function
 function generateYAMLs {
   mkdir -p resources
   helm template $APIC_CHART --namespace $PROJECT --name apic \
@@ -70,11 +71,11 @@ function installAPIC {
 
 cd $WORK_DIR
 #unpackAPIC
-defineRegistry
+#defineRegistry
 #dockerLogin
 #loadImages
 
 cd charts
-generateYAMLs
-#removeAPIC
-#installAPIC
+#generateYAMLs
+removeAPIC
+installAPIC
