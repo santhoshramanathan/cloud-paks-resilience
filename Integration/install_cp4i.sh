@@ -61,7 +61,7 @@ function installAPIC {
 
 cd $WORK_DIR
 #unpackAPIC
-dockerLogin
+#dockerLogin
 #loadImages
 
 cd charts
