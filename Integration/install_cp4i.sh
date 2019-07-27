@@ -40,7 +40,7 @@ function loadImages {
   for i in *
   do
     echo Loading $i
-    docker load $i
+    docker load --input $i
   done
   cd ..
 }
