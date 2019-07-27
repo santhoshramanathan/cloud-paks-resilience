@@ -62,7 +62,7 @@ function installAPIC {
 cd $WORK_DIR
 #unpackAPIC
 #dockerLogin
-#loadImages
+loadImages
 
 cd charts
 #generateYAMLs
