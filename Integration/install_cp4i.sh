@@ -26,6 +26,14 @@ function unpackAPIC {
   tar xzvf $INSTALL_DIR/$APIC
 }
 
+function dockerLogin {
+  # Save endpoint
+  export INTERNAL_REG_HOST=`oc get route docker-registry --template='{{ .spec.host }}' -n default`
+
+  # Login
+  docker login -u `oc whoami` -p `oc whoami -t` $INTERNAL_REG_HOST
+}
+
 function loadImages {
   cd images
   for i in *
@@ -52,6 +60,7 @@ function installAPIC {
 
 cd $WORK_DIR
 #unpackAPIC
+dockerLogin
 loadImages
 
 cd charts
