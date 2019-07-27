@@ -50,6 +50,11 @@ function generateYAMLs {
   helm template $APIC_CHART --namespace $PROJECT --name apic --output-dir resources
 }
 
+function removeAPIC {
+  oc delete --recursive --filename resources
+
+}
+
 function installAPIC {
   oc apply --recursive --filename resources
 }
@@ -66,4 +71,5 @@ cd $WORK_DIR
 
 cd charts
 #generateYAMLs
+removeAPIC
 installAPIC
