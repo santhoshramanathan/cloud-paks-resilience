@@ -3,7 +3,7 @@ SCC=ibm-privileged-scc
 INSTALL_DIR=/root/Integration/install/installer_files/cluster/icipcontent
 APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Integration-Platform-1.0.0.tgz
 APIC_CHART=ibm-apiconnect-cip-prod-1.0.0.tgz
-WORK_DIR=/root/work_cp4i 
+WORK_DIR=/root/work_cp4i
 
 function createProject {
   echo Creating project...
@@ -61,7 +61,7 @@ function installAPIC {
 cd $WORK_DIR
 #unpackAPIC
 dockerLogin
-loadImages
+#loadImages
 
 cd charts
 #generateYAMLs
