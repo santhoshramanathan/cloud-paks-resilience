@@ -26,11 +26,14 @@ function unpackAPIC {
   tar xzvf $INSTALL_DIR/$APIC
 }
 
-function dockerLogin {
+function defineRegistry {
   # Save endpoint
   export INTERNAL_REG_HOST=`oc get route docker-registry --template='{{ .spec.host }}' -n default`
 
   echo Docker Registry: $INTERNAL_REG_HOST
+}
+
+function dockerLogin {
   # Login
   docker login -u `oc whoami` -p `oc whoami -t` $INTERNAL_REG_HOST
 }
@@ -47,7 +50,8 @@ function loadImages {
 
 function generateYAMLs {
   mkdir -p resources
-  helm template $APIC_CHART --namespace $PROJECT --name apic --output-dir resources
+  helm template $APIC_CHART --namespace $PROJECT --name apic \
+    --output-dir resources --set operator.registry=$INTERNAL_REG_HOST
 }
 
 function removeAPIC {
@@ -66,10 +70,11 @@ function installAPIC {
 
 cd $WORK_DIR
 #unpackAPIC
+defineRegistry
 #dockerLogin
 #loadImages
 
 cd charts
-#generateYAMLs
-removeAPIC
-installAPIC
+generateYAMLs
+#removeAPIC
+#installAPIC
