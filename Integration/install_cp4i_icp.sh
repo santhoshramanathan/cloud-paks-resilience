@@ -12,9 +12,10 @@ function createProject {
   $EXEC create ns $PROJECT
 }
 
-function updateSCC {
-  echo Updating Security Context...
-  oc adm policy add-scc-to-user $SCC system:serviceaccounts:$PROJECT
+function updatePSP {
+  echo Updating PSP...
+  kubectl -n $PROJECT create rolebinding pod-security-policy-rolebinding \
+    --clusterrole=pod-security-policy-clusterrole --group=system:serviceaccounts:namespace
 }
 
 function createWorkDir {
@@ -69,7 +70,7 @@ function installAPIC {
 
 
 createProject
-# updateSCC
+updatePSP
 
 cd $WORK_DIR
 #unpackAPIC
