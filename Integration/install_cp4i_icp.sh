@@ -1,3 +1,5 @@
+EXEC=kubectl
+
 PROJECT=cp4i
 SCC=ibm-privileged-scc
 INSTALL_DIR=/root/Integration/install/installer_files/cluster/icipcontent
@@ -7,7 +9,7 @@ WORK_DIR=/root/work_cp4i
 
 function createProject {
   echo Creating project...
-  oc new-project $PROJECT
+  $EXEC new-project $PROJECT
 }
 
 function updateSCC {
