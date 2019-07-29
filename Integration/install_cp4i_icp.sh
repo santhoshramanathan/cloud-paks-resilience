@@ -9,7 +9,7 @@ WORK_DIR=/root/work_cp4i
 
 function createProject {
   echo Creating project...
-  $EXEC new-project $PROJECT
+  $EXEC create ns $PROJECT
 }
 
 function updateSCC {
