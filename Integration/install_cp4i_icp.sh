@@ -27,7 +27,7 @@ function addImagePullSecret {
 }
 
 function login {
-  cloudctl login -a https://$CLUSTER_DOMAIN:8443 --skip-ssl-validation
+  cloudctl login -a https://$CLUSTER_DOMAIN:8443 --skip-ssl-validation -u admin -p $ICP_PASSWORD
 }
 
 function createWorkDir {
