@@ -15,6 +15,13 @@ function updateSCC {
   oc adm policy add-scc-to-user $SCC system:serviceaccounts:$PROJECT
 }
 
+function addImagePullSecret {
+  echo Adding Image Pull Secret
+  oc policy add-role-to-group \
+    system:image-puller system:serviceaccounts:$PROJECT \
+    --namespace=project-b
+}
+
 function createWorkDir {
   echo Creating work directory...
   mkdir -p $WORK_DIR
@@ -68,12 +75,13 @@ function installAPIC {
 
 # createProject
 # updateSCC
+addImagePullSecret
 
 cd $WORK_DIR
 #unpackAPIC
 #defineRegistry
 #dockerLogin
-loadImages
+#loadImages
 
 cd charts
 #generateYAMLs
