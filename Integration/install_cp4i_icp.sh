@@ -30,6 +30,12 @@ function login {
   cloudctl login -a https://$CLUSTER_DOMAIN:8443 --skip-ssl-validation -u admin -p $ICP_PASSWORD -n $PROJECT
 }
 
+function dockerLogin {
+  # Login
+  docker login -u admin -p $ICP_PASSWORD $CLUSTER_DOMAIN:8500
+}
+
+
 function createWorkDir {
   echo Creating work directory...
   mkdir -p $WORK_DIR
@@ -41,17 +47,6 @@ function unpackAPIC {
   tar xzvf $INSTALL_DIR/$APIC
 }
 
-function defineRegistry {
-  # Save endpoint
-  export INTERNAL_REG_HOST=`oc get route docker-registry --template='{{ .spec.host }}' -n default`
-
-  echo Docker Registry: $INTERNAL_REG_HOST
-}
-
-function dockerLogin {
-  # Login
-  docker login -u `oc whoami` -p `oc whoami -t` $INTERNAL_REG_HOST
-}
 
 function loadImages {
   cd images
@@ -85,11 +80,11 @@ createProject
 updatePSP
 addImagePullSecret
 login
+dockerLogin
 
 cd $WORK_DIR
 #unpackAPIC
-#defineRegistry
-#dockerLogin
+
 #loadImages
 
 cd charts
