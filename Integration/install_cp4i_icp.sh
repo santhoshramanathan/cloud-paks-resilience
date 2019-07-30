@@ -20,6 +20,10 @@ function updatePSP {
 
 function addImagePullSecret {
   kubectl config set-context cloudpaks-context --namespace=$PROJECT
+
+  kubectl create secret docker-registry myregistrykey --docker-server=cloudpaks.icp:8500 \
+    --docker-username=admin --docker-password=$ICP_PASSWORD --docker-email=patro@patro.org
+
 }
 
 function createWorkDir {
