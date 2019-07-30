@@ -6,6 +6,7 @@ INSTALL_DIR=/root/Integration/install/installer_files/cluster/icipcontent
 APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Integration-Platform-1.0.0.tgz
 APIC_CHART=ibm-apiconnect-cip-prod-1.0.0.tgz
 WORK_DIR=/root/work_cp4i
+CLUSTER_DOMAIN=cloudpaks.icp
 
 function createProject {
   echo Creating project...
@@ -21,9 +22,12 @@ function updatePSP {
 function addImagePullSecret {
   kubectl config set-context cloudpaks-context --namespace=$PROJECT
 
-  kubectl create secret docker-registry myregistrykey --docker-server=cloudpaks.icp:8500 \
+  kubectl create secret docker-registry myregistrykey --docker-server=$CLUSTER_DOMAIN:8500 \
     --docker-username=admin --docker-password=$ICP_PASSWORD --docker-email=patro@patro.org
+}
 
+function login {
+  cloudctl login -a https://$CLUSTER_DOMAIN:8443 --skip-ssl-validation
 }
 
 function createWorkDir {
@@ -80,6 +84,7 @@ function installAPIC {
 createProject
 updatePSP
 addImagePullSecret
+login
 
 cd $WORK_DIR
 #unpackAPIC
