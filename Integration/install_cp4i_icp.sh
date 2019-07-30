@@ -1,12 +1,11 @@
 EXEC=kubectl
 
 PROJECT=cp4i
-SCC=ibm-privileged-scc
-INSTALL_DIR=/root/Integration/install/installer_files/cluster/icipcontent
-APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Integration-Platform-1.0.0.tgz
-APIC_CHART=ibm-apiconnect-cip-prod-1.0.0.tgz
-WORK_DIR=/root/work_cp4i
+#INSTALL_DIR=/root/Integration/install/installer_files/cluster/icipcontent
+#APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Integration-Platform-1.0.0.tgz
+#APIC_CHART=ibm-apiconnect-cip-prod-1.0.0.tgz
 CLUSTER_DOMAIN=cloudpaks.icp
+INSTALL_FILE=/root/Integration/install/ibm-cloud-integration-platform-x86_64-2019.2.1.tar.gz
 
 function createProject {
   echo Creating project...
@@ -35,59 +34,15 @@ function dockerLogin {
   docker login -u admin -p $ICP_PASSWORD $CLUSTER_DOMAIN:8500
 }
 
-
-function createWorkDir {
-  echo Creating work directory...
-  mkdir -p $WORK_DIR
-}
-
-function unpackAPIC {
-
-  echo Unpacking API Connect...
-  tar xzvf $INSTALL_DIR/$APIC
-}
-
-
-function loadImages {
-  cd images
-  for i in *
-  do
-    echo Loading $i
-    docker load --input $i
-  done
-  cd ..
-}
-
-# Thjis function requires the defineRegistry function
-function generateYAMLs {
-  mkdir -p resources
-  helm template $APIC_CHART --namespace $PROJECT --name apic \
-    --output-dir resources --set operator.registry=$INTERNAL_REG_HOST
-}
-
-function removeAPIC {
-  oc delete --recursive --filename resources
-
-}
-
-function installAPIC {
-  oc apply --recursive --filename resources
+function installFiles {
+  cloudctl catalog load-archive --archive $INSTALL_FILE --registry $CLUSTER_DOMAIN:8500/namespace  
 }
 
 
 
-createProject
-updatePSP
-addImagePullSecret
-login
-dockerLogin
-
-cd $WORK_DIR
-#unpackAPIC
-
-#loadImages
-
-cd charts
-#generateYAMLs
-#removeAPIC
-#installAPIC
+#createProject
+#updatePSP
+#addImagePullSecret
+#login
+#dockerLogin
+installFiles
