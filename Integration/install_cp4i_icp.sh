@@ -18,6 +18,10 @@ function updatePSP {
     --clusterrole=pod-security-policy-clusterrole --group=system:serviceaccounts:namespace
 }
 
+function addImagePullSecret {
+  kubectl config set-context cloudpaks-context --namespace=$PROJECT
+}
+
 function createWorkDir {
   echo Creating work directory...
   mkdir -p $WORK_DIR
@@ -71,6 +75,7 @@ function installAPIC {
 
 createProject
 updatePSP
+addImagePullSecret
 
 cd $WORK_DIR
 #unpackAPIC
