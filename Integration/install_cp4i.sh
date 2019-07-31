@@ -31,12 +31,11 @@ function updateSCC {
   oc adm policy add-scc-to-user $SCC system:serviceaccount:$PROJECT:$SERVICE_ACCOUNT
 }
 
-# Is it needed?
 function addImagePullSecret {
   echo Adding Image Pull Secret
   oc policy add-role-to-group \
-    system:image-puller system:serviceaccounts:default \
-    --namespace=project-b
+    system:image-puller system:serviceaccount:$PROJECT:$SERVICE_ACCOUNT \
+    --namespace=default
 }
 
 function createWorkDir {
@@ -95,7 +94,7 @@ function installAPIC {
 
 #createProject
 #updateSCC
-#addImagePullSecret
+addImagePullSecret
 
 cd $WORK_DIR
 #unpackAPIC
