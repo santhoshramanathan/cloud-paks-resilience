@@ -77,7 +77,8 @@ function generateYAMLs {
   mkdir -p resources
   helm template $APIC_CHART --namespace $PROJECT --name apic \
     --output-dir resources \
-    --set operator.registry=$REGISTRY_URL
+    --set operator.registry=$REGISTRY_URL, \
+      operator.registry-secret=`oc whoami -t`
 }
 
 function removeAPIC {
