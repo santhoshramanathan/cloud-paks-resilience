@@ -73,7 +73,9 @@ function loadImages {
 function generateYAMLs {
   mkdir -p resources
   helm template $APIC_CHART --namespace $PROJECT --name apic \
-    --output-dir resources --set operator.registry=$INTERNAL_REG_HOST
+    --output-dir resources \
+    --set operator.registry=$INTERNAL_REG_HOST, \
+      securityContext.runAsUser=1000160000
 }
 
 function removeAPIC {
@@ -99,6 +101,6 @@ cd $WORK_DIR
 #loadImages
 
 cd charts
-#generateYAMLs
-removeAPIC
-installAPIC
+generateYAMLs
+#removeAPIC
+#installAPIC
