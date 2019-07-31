@@ -102,5 +102,5 @@ cd $WORK_DIR
 
 cd charts
 generateYAMLs
-#removeAPIC
-#installAPIC
+removeAPIC
+installAPIC
