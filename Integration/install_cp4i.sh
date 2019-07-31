@@ -27,7 +27,7 @@ function createProject {
 
 function updateSCC {
   echo Updating Security Context...
-  oc adm policy add-scc-to-user $SCC system:serviceaccounts:$SERVICE_ACCOUNT
+  oc adm policy add-scc-to-user $SCC system:serviceaccount:$PROJECT:$SERVICE_ACCOUNT
 }
 
 # Is it needed?
@@ -76,8 +76,7 @@ function generateYAMLs {
   mkdir -p resources
   helm template $APIC_CHART --namespace $PROJECT --name apic \
     --output-dir resources \
-    --set operator.registry=$INTERNAL_REG_HOST, \
-      securityContext.runAsUser=1000160000
+    --set operator.registry=$INTERNAL_REG_HOST
 }
 
 function removeAPIC {
