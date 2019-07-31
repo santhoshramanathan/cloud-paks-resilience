@@ -13,7 +13,7 @@ WORK_DIR=/root/work_cp4i
 IMAGE_DIR=/images/Integration/2019.3.1
 IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.1-for-OpenShift.tar.gz
 REGISTRY_NAME=docker-registry
-REGISTRY_URL=172.21.173.116:5000
+REGISTRY_URL=172.21.173.116:5000 
 
 function unzipImage {
   echo Unzipping image...
