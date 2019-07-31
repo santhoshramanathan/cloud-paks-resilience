@@ -89,11 +89,11 @@ function installAPIC {
 
 cd $WORK_DIR
 #unpackAPIC
-defineRegistry
-dockerLogin
-loadImages
+#defineRegistry
+#dockerLogin
+#loadImages
 
 cd charts
-#generateYAMLs
-#removeAPIC
-#installAPIC
+generateYAMLs
+removeAPIC
+installAPIC
