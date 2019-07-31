@@ -13,6 +13,7 @@ WORK_DIR=/root/work_cp4i
 IMAGE_DIR=/images/Integration/2019.3.1
 IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.1-for-OpenShift.tar.gz
 REGISTRY_NAME=docker-registry
+REGISTRY_URL=docker-registry.default.svc:5000
 
 function unzipImage {
   echo Unzipping image...
@@ -76,7 +77,7 @@ function generateYAMLs {
   mkdir -p resources
   helm template $APIC_CHART --namespace $PROJECT --name apic \
     --output-dir resources \
-    --set operator.registry=$INTERNAL_REG_HOST
+    --set operator.registry=$REGISTRY_URL
 }
 
 function removeAPIC {
