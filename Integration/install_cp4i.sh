@@ -81,8 +81,8 @@ function installAPIC {
 
 #unzipImage
 
-createProject
-updateSCC
+#createProject
+#updateSCC
 addImagePullSecret
 
 cd $WORK_DIR
