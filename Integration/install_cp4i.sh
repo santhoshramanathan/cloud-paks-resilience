@@ -2,6 +2,7 @@ PROJECT=cp4i
 
 #SCC=ibm-privileged-scc
 SCC=anyuid
+SERVICE_ACCOUNT=apic-ibm-apiconnect-icp4i-prod
 
 INSTALL_DIR=/images/Integration/2019.3.1/installer_files/cluster/icp4icontent
 APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Pak-for-Integration-1.0.1.tgz
@@ -24,7 +25,7 @@ function createProject {
 
 function updateSCC {
   echo Updating Security Context...
-  oc adm policy add-scc-to-user $SCC system:serviceaccounts:$PROJECT
+  oc adm policy add-scc-to-user $SCC system:serviceaccounts:$SERVICE_ACCOUNT
 }
 
 # Is it needed?
