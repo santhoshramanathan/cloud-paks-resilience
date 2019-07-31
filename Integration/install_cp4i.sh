@@ -34,7 +34,7 @@ function updateSCC {
 function addImagePullSecret {
   echo Adding Image Pull Secret
   oc policy add-role-to-user \
-    system:image-puller system:serviceaccount:$PROJECT:$SERVICE_ACCOUNT 
+    system:image-puller system:serviceaccount:$PROJECT:$SERVICE_ACCOUNT
 }
 
 function createWorkDir {
@@ -97,7 +97,7 @@ addImagePullSecret
 cd $WORK_DIR
 #unpackAPIC
 defineRegistry
-#dockerLogin
+dockerLogin
 #loadImages
 
 cd charts
