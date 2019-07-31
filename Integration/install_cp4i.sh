@@ -8,7 +8,8 @@ IMAGE_DIR=/images/Integration/2019.3.1
 IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.1-for-OpenShift.tar.gz
 
 function unzipImage {
-  tar tzvf $IMAGE_DIR/$IMAGE
+  echo Unzipping image...
+  tar xzvf $IMAGE_DIR/$IMAGE
 }
 
 function createProject {
