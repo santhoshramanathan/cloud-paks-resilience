@@ -79,11 +79,11 @@ function installAPIC {
 }
 
 
-unzipImage
+#unzipImage
 
-#createProject
-#updateSCC
-#addImagePullSecret
+createProject
+updateSCC
+addImagePullSecret
 
 cd $WORK_DIR
 #unpackAPIC
