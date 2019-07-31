@@ -88,10 +88,10 @@ function installAPIC {
 #addImagePullSecret
 
 cd $WORK_DIR
-unpackAPIC
-#defineRegistry
-#dockerLogin
-#loadImages
+#unpackAPIC
+defineRegistry
+dockerLogin
+loadImages
 
 cd charts
 #generateYAMLs
