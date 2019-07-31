@@ -1,5 +1,8 @@
 PROJECT=cp4i
-SCC=ibm-privileged-scc
+
+#SCC=ibm-privileged-scc
+SCC=anyuid
+
 INSTALL_DIR=/images/Integration/2019.3.1/installer_files/cluster/icp4icontent
 APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Pak-for-Integration-1.0.1.tgz
 APIC_CHART=ibm-apiconnect-icp4i-prod-1.0.1.tgz
@@ -85,7 +88,7 @@ function installAPIC {
 #unzipImage
 
 #createProject
-#updateSCC
+updateSCC
 #addImagePullSecret
 
 cd $WORK_DIR
@@ -95,6 +98,6 @@ cd $WORK_DIR
 #loadImages
 
 cd charts
-generateYAMLs
+#generateYAMLs
 removeAPIC
 installAPIC
