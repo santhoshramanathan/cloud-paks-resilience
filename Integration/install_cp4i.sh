@@ -25,7 +25,7 @@ function updateSCC {
 function addImagePullSecret {
   echo Adding Image Pull Secret
   oc policy add-role-to-group \
-    system:image-puller system:serviceaccounts:$PROJECT \
+    system:image-puller system:serviceaccounts:default \
     --namespace=project-b
 }
 
@@ -79,11 +79,11 @@ function installAPIC {
 }
 
 
-#unzipImage
+unzipImage
 
 #createProject
 #updateSCC
-addImagePullSecret
+#addImagePullSecret
 
 cd $WORK_DIR
 #unpackAPIC
