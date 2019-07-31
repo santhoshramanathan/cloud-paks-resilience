@@ -34,8 +34,7 @@ function updateSCC {
 function addImagePullSecret {
   echo Adding Image Pull Secret
   oc policy add-role-to-user \
-    system:image-puller system:serviceaccount:$PROJECT:$SERVICE_ACCOUNT \
-    --namespace=$PROJECT
+    system:image-puller system:serviceaccount:$PROJECT:$SERVICE_ACCOUNT 
 }
 
 function createWorkDir {
