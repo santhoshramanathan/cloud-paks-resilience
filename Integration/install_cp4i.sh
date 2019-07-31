@@ -33,8 +33,8 @@ function updateSCC {
 
 function addImagePullSecret {
   echo Adding Image Pull Secret
-  oc policy add-role-to-user \
-    system:image-puller system:serviceaccount:$PROJECT:$SERVICE_ACCOUNT \
+  oc policy add-role-to-group \
+    system:image-puller system:serviceaccount:$PROJECT \
     --namespace=default
 }
 
