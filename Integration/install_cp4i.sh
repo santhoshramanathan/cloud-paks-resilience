@@ -1,6 +1,6 @@
 PROJECT=cp4i
 SCC=ibm-privileged-scc
-INSTALL_DIR=/images/Integration/2019.3.1/installer_files/cluster/icipcontent
+INSTALL_DIR=/images/Integration/2019.3.1/installer_files/cluster/icp4icontent
 APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Integration-Platform-1.0.1.tgz
 APIC_CHART=ibm-apiconnect-cip-prod-1.0.0.tgz
 WORK_DIR=/root/work_cp4i
@@ -23,6 +23,7 @@ function updateSCC {
   oc adm policy add-scc-to-user $SCC system:serviceaccounts:$PROJECT
 }
 
+# Is it needed?
 function addImagePullSecret {
   echo Adding Image Pull Secret
   oc policy add-role-to-group \
