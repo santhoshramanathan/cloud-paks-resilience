@@ -1,7 +1,7 @@
 PROJECT=cp4i
 SCC=ibm-privileged-scc
-INSTALL_DIR=/root/Integration/install/installer_files/cluster/icipcontent
-APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Integration-Platform-1.0.0.tgz
+INSTALL_DIR=/images/Integration/2019.3.1/installer_files/cluster/icipcontent
+APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Integration-Platform-1.0.1.tgz
 APIC_CHART=ibm-apiconnect-cip-prod-1.0.0.tgz
 WORK_DIR=/root/work_cp4i
 IMAGE_DIR=/images/Integration/2019.3.1
@@ -80,14 +80,14 @@ function installAPIC {
 }
 
 
-unzipImage
+#unzipImage
 
 #createProject
 #updateSCC
 #addImagePullSecret
 
 cd $WORK_DIR
-#unpackAPIC
+unpackAPIC
 #defineRegistry
 #dockerLogin
 #loadImages
