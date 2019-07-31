@@ -80,17 +80,17 @@ function installAPIC {
 
 unzipImage
 
-createProject
-updateSCC
-addImagePullSecret
+#createProject
+#updateSCC
+#addImagePullSecret
 
 cd $WORK_DIR
-unpackAPIC
-defineRegistry
-dockerLogin
-loadImages
+#unpackAPIC
+#defineRegistry
+#dockerLogin
+#loadImages
 
 cd charts
-generateYAMLs
-removeAPIC
-installAPIC
+#generateYAMLs
+#removeAPIC
+#installAPIC
