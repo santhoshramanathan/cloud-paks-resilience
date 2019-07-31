@@ -4,6 +4,12 @@ INSTALL_DIR=/root/Integration/install/installer_files/cluster/icipcontent
 APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Integration-Platform-1.0.0.tgz
 APIC_CHART=ibm-apiconnect-cip-prod-1.0.0.tgz
 WORK_DIR=/root/work_cp4i
+IMAGE_DIR=/images/Integration/2019.3.1
+IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.1-for-OpenShift.tar.gz
+
+function unzipImage {
+  tar tzvf $IMAGE_DIR/$IMAGE
+}
 
 function createProject {
   echo Creating project...
@@ -72,18 +78,19 @@ function installAPIC {
 }
 
 
+unzipImage
 
-# createProject
-# updateSCC
+createProject
+updateSCC
 addImagePullSecret
 
 cd $WORK_DIR
-#unpackAPIC
-#defineRegistry
-#dockerLogin
-#loadImages
+unpackAPIC
+defineRegistry
+dockerLogin
+loadImages
 
 cd charts
-#generateYAMLs
+generateYAMLs
 removeAPIC
 installAPIC

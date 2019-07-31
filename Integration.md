@@ -19,11 +19,7 @@ Cloud Pak for Integration requires [ICP](ICP.md)
 
 ## Installing CP for integration
 
-* Version: 2019.2.1
-* Part Number: CJ5L5EN
+* Version: 2019.3.1
+* Part Number: <TBD>
 
 ### Install API Connect
-
-### HA for CP for integration
-
-https://ibm.ent.box.com/s/7a07hgwn2ap56ztxdg2bap2q9eibniua
