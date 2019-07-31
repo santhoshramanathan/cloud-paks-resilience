@@ -1,7 +1,9 @@
 PROJECT=cp4i
 
 #SCC=ibm-privileged-scc
-SCC=anyuid
+#SCC=anyuid
+SCC=privileged
+
 SERVICE_ACCOUNT=apic-ibm-apiconnect-icp4i-prod
 
 INSTALL_DIR=/images/Integration/2019.3.1/installer_files/cluster/icp4icontent
