@@ -6,7 +6,7 @@ APIC_CHART=ibm-apiconnect-cip-prod-1.0.0.tgz
 WORK_DIR=/root/work_cp4i
 IMAGE_DIR=/images/Integration/2019.3.1
 IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.1-for-OpenShift.tar.gz
-REGISTRY_NAME=registry-console
+REGISTRY_NAME=docker-registry
 
 function unzipImage {
   echo Unzipping image...
