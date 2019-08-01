@@ -15,15 +15,8 @@ Knowledge Center: https://www.ibm.com/support/knowledgecenter/SSGT7J/welcome.htm
 
 ## Pre-requisite
 
-Cloud Pak for Integration requires [ICP](ICP.md)
-
-## Installing CP for integration
-
-* Version: 2019.2.1
-* Part Number: CJ5L5EN
-
 ### Install API Connect
 
-### HA for CP for integration
+### Install apicup
 
-https://ibm.ent.box.com/s/7a07hgwn2ap56ztxdg2bap2q9eibniua
+https://www.ibm.com/support/knowledgecenter/en/SSGT7J/install/install_api.html
