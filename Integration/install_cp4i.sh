@@ -61,13 +61,14 @@ function dockerLogin {
 }
 
 function loadImages {
-  cd images
-  for i in *
+  for i in registry-upload management management-images-kubernetes_v2018.x.y.tgz \
+    registry-upload analytics analytics-images-kubernetes_v2018.x.y.tgz \
+    registry-upload portal portal-images-kubernetes_v2018.x.y.tgz
   do
-    echo Loading $i
-    docker load --input $i
+    echo Loading image $i
   done
-  cd ..
+#  apicup registry-upload management management-images-kubernetes_v2018.x.y.tgz <registry-address>:<port> --accept-license --debug
+
 }
 
 # Thjis function requires the defineRegistry function
@@ -92,15 +93,15 @@ function installAPIC {
 
 #createProject
 #updateSCC
-addImagePullSecret
+#addImagePullSecret
 
 cd $WORK_DIR
 #unpackAPIC
-defineRegistry
-dockerLogin
-#loadImages
+#defineRegistry
+#dockerLogin
+loadImages
 
 cd charts
-generateYAMLs
-removeAPIC
-installAPIC
+#generateYAMLs
+#removeAPIC
+#installAPIC
