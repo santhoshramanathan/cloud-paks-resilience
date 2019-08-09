@@ -60,12 +60,22 @@ function dockerLogin {
   docker login -u `oc whoami` -p `oc whoami -t` $INTERNAL_REG_HOST
 }
 
+function reTagImages {
+  cd images
+  for i in *
+  do
+    echo Retagging $i
+    0docker tag $i
+}
+
 function loadImages {
-  apicup registry-upload management management-images-kubernetes_v2018.x.y.tgz $INTERNAL_REG_HOST --accept-license --debug
-
-  apicup registry-upload analytics analytics-images-kubernetes_v2018.x.y.tgz <registry-address>:<port> --accept-license --debug
-
-  apicup registry-upload portal portal-images-kubernetes_v2018.x.y.tgz <registry-address>:<port> --accept-license --debug
+  cd images
+  for i in *
+  do
+    echo Loading $i
+    docker load --input $i
+  done
+  cd ..
 }
 
 # Thjis function requires the defineRegistry function
@@ -93,9 +103,10 @@ function installAPIC {
 #addImagePullSecret
 
 cd $WORK_DIR
-unpackAPIC
-defineRegistry
+#unpackAPIC
+#defineRegistry
 #dockerLogin
+reTagImages
 #loadImages
 
 cd charts

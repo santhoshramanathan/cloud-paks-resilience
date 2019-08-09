@@ -74,15 +74,20 @@ function remove_ip6_entries {
   sed -i "s/^::/#::/g" /etc/hosts
 }
 
+function fix_resolv_conf {
+  echo "namesever 8.8.8.8" >  /etc/origin/node/resolv.conf
+}
+
 #change_certificate
 #register_satellite
 #install_subscriptions
-enable_yum_repos
-install_packages
-install_docker
-stop_docker
-configure_docker_storage
-start_docker
-enable_network_manager
-set_selinux_enforcing
-remove_ip6_entries
+#enable_yum_repos
+#install_packages
+#install_docker
+#stop_docker
+#configure_docker_storage
+#start_docker
+#enable_network_manager
+#set_selinux_enforcing
+#remove_ip6_entries
+fix_resolv_conf
