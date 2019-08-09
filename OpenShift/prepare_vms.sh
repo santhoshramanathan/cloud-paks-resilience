@@ -89,5 +89,5 @@ function fix_resolv_conf {
 #start_docker
 #enable_network_manager
 #set_selinux_enforcing
-#remove_ip6_entries
+remove_ip6_entries
 fix_resolv_conf
