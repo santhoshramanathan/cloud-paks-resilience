@@ -6,6 +6,17 @@ PROJECT=cp4i
 #APIC_CHART=ibm-apiconnect-cip-prod-1.0.0.tgz
 CLUSTER_DOMAIN=cloudpaks.icp
 INSTALL_FILE=/root/Integration/install/ibm-cloud-integration-platform-x86_64-2019.2.1.tar.gz
+IMAGE_DIR=/images/Integration
+IMAGE=IBM_CLOUD_INTEGRATION_PLATFORM_20.zip
+
+
+function unzipImage {
+  echo Unzipping image...
+  cd $IMAGE_DIR
+  tar xzvf $IMAGE
+}
+
+
 
 function createProject {
   echo Creating project...
@@ -35,14 +46,14 @@ function dockerLogin {
 }
 
 function installFiles {
-  cloudctl catalog load-archive --archive $INSTALL_FILE --registry $CLUSTER_DOMAIN:8500/namespace  
+  cloudctl catalog load-archive --archive $INSTALL_FILE --registry $CLUSTER_DOMAIN:8500/namespace
 }
 
 
-
+unzipImage
 #createProject
 #updatePSP
 #addImagePullSecret
 #login
 #dockerLogin
-installFiles
+#installFiles
