@@ -6,6 +6,7 @@ CLUSTER_DOMAIN=patrocinio.icp
 INSTALL_FILE=/images/Integration/ibm-cloud-integration-platform-x86_64-2019.2.1.tar.gz
 IMAGE_DIR=/images/Integration
 IMAGE=IBM_CLOUD_INTEGRATION_PLATFORM_20.zip
+IMAGE_SECRET=myregistrykey
 
 
 function unzipImage {
@@ -35,7 +36,8 @@ function updatePSP {
 function addImagePullSecret {
   kubectl config set-context cloudpaks-context --namespace=$PROJECT
 
-  kubectl create secret docker-registry myregistrykey --docker-server=$CLUSTER_DOMAIN:8500 \
+  kubectl delete secret $IMAGE_SECRET
+  kubectl create secret docker-registry $IMAGE_SECRET --docker-server=$CLUSTER_DOMAIN:8500 \
     --docker-username=admin --docker-password=$ICP_PASSWORD --docker-email=patro@patro.org
 }
 
