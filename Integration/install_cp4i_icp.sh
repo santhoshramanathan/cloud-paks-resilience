@@ -59,7 +59,7 @@ function installFiles {
 #extractInstall
 #createNamespace
 #updatePSP
-addImagePullSecret
-#login
-#dockerLogin
-#installFiles
+#addImagePullSecret
+login
+dockerLogin
+installFiles
