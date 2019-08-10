@@ -13,7 +13,7 @@ IMAGE=IBM_CLOUD_INTEGRATION_PLATFORM_20.zip
 function unzipImage {
   echo Unzipping image...
   cd $IMAGE_DIR
-  tar xzvf $IMAGE
+  unzip $IMAGE
 }
 
 
