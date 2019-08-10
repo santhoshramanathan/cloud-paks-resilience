@@ -1,5 +1,3 @@
-EXEC=kubectl
-
 PROJECT=cp4i
 #INSTALL_DIR=/root/Integration/install/installer_files/cluster/icipcontent
 #APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Integration-Platform-1.0.0.tgz
@@ -23,15 +21,15 @@ function extractInstall {
 
 
 
-function createProject {
-  echo Creating project...
+function createNamespace {
+  echo Creating namespace...
   $EXEC create ns $PROJECT
 }
 
 function updatePSP {
   echo Updating PSP...
   kubectl -n $PROJECT create rolebinding pod-security-policy-rolebinding \
-    --clusterrole=pod-security-policy-clusterrole --group=system:serviceaccounts:namespace
+    --clusterrole=pod-security-policy-clusterrole --group=system:serviceaccounts:$PROJECT
 }
 
 function addImagePullSecret {
@@ -55,10 +53,10 @@ function installFiles {
 }
 
 
-unzipImage
-extractInstall
-#createProject
-#updatePSP
+#unzipImage
+#extractInstall
+createNamespace
+updatePSP
 #addImagePullSecret
 #login
 #dockerLogin
