@@ -23,7 +23,7 @@ function extractInstall {
 
 function createNamespace {
   echo Creating namespace...
-  $EXEC create ns $PROJECT
+  kubectl create ns $PROJECT
 }
 
 function updatePSP {
