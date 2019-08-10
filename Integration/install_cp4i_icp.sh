@@ -55,9 +55,9 @@ function installFiles {
 
 #unzipImage
 #extractInstall
-createNamespace
-updatePSP
-#addImagePullSecret
+#createNamespace
+#updatePSP
+addImagePullSecret
 #login
 #dockerLogin
 #installFiles
