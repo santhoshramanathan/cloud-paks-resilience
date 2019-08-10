@@ -5,7 +5,7 @@ PROJECT=cp4i
 #APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Integration-Platform-1.0.0.tgz
 #APIC_CHART=ibm-apiconnect-cip-prod-1.0.0.tgz
 CLUSTER_DOMAIN=cloudpaks.icp
-INSTALL_FILE=/root/Integration/install/ibm-cloud-integration-platform-x86_64-2019.2.1.tar.gz
+INSTALL_FILE=/images/Integration/ibm-cloud-integration-platform-x86_64-2019.2.1.tar.gz
 IMAGE_DIR=/images/Integration
 IMAGE=IBM_CLOUD_INTEGRATION_PLATFORM_20.zip
 
@@ -14,6 +14,11 @@ function unzipImage {
   echo Unzipping image...
   cd $IMAGE_DIR
   unzip $IMAGE
+}
+
+function extractInstall {
+  echo Extracting install...
+  tar xvf $INSTALL_FILE
 }
 
 
@@ -51,6 +56,7 @@ function installFiles {
 
 
 unzipImage
+extractInstall
 #createProject
 #updatePSP
 #addImagePullSecret
