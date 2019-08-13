@@ -53,7 +53,7 @@ function installFiles {
   for file in $INSTALL_DIR
   do
     echo Uploading $file
-    cloudctl catalog load-archive --archive $INSTALL_DIR/$file --registry $CLUSTER_DOMAIN:8500/namespace
+    cloudctl catalog load-archive --archive $file --registry $CLUSTER_DOMAIN:8500/namespace
   done
 }
 
