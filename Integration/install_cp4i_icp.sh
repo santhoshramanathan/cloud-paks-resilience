@@ -8,7 +8,6 @@ IMAGE_DIR=/images/Integration
 IMAGE=IBM_CLOUD_INTEGRATION_PLATFORM_20.zip
 IMAGE_SECRET=myregistrykey
 
-
 function unzipImage {
   echo Unzipping image...
   cd $IMAGE_DIR
@@ -60,6 +59,6 @@ function installFiles {
 #createNamespace
 #updatePSP
 #addImagePullSecret
-login
-dockerLogin
-#installFiles
+#login
+#dockerLogin
+installFiles
