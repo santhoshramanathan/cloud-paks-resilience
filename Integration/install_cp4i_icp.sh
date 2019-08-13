@@ -1,5 +1,5 @@
 PROJECT=cp4i
-INSTALL_DIR=/images/Integration/install/installer_files/cluster/icipcontent
+INSTALL_DIR=/images/Integration/installer_files/cluster/icipcontent
 #APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Integration-Platform-1.0.0.tgz
 #APIC_CHART=ibm-apiconnect-cip-prod-1.0.0.tgz
 CLUSTER_DOMAIN=patrocinio.icp
