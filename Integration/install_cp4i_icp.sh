@@ -64,5 +64,5 @@ function installFiles {
 #updatePSP
 #addImagePullSecret
 #login
-#dockerLogin
+dockerLogin
 installFiles
