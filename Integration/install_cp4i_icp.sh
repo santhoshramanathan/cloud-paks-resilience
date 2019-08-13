@@ -1,5 +1,5 @@
 PROJECT=cp4i
-#INSTALL_DIR=/root/Integration/install/installer_files/cluster/icipcontent
+INSTALL_DIR=/images/Integration/install/installer_files/cluster/icipcontent
 #APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Integration-Platform-1.0.0.tgz
 #APIC_CHART=ibm-apiconnect-cip-prod-1.0.0.tgz
 CLUSTER_DOMAIN=patrocinio.icp
@@ -50,7 +50,10 @@ function dockerLogin {
 }
 
 function installFiles {
-  cloudctl catalog load-archive --archive $INSTALL_FILE --registry $CLUSTER_DOMAIN:8500/namespace
+  for file in $INSTALL_DIR do
+    echo Uploading $file
+    cloudctl catalog load-archive --archive $INSTALL_DIR/$file --registry $CLUSTER_DOMAIN:8500/namespace
+  done
 }
 
 
