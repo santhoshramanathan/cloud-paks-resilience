@@ -62,4 +62,4 @@ function installFiles {
 #addImagePullSecret
 login
 dockerLogin
-installFiles
+#installFiles
