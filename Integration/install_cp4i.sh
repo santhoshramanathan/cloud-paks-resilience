@@ -9,6 +9,7 @@ function unzipImage {
 
 function copyConfig {
   cd installer_files/cluster
+  cp config.yaml config.yaml.original
   cp $CUR_DIR/config.yaml .
 }
 
