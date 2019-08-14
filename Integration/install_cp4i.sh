@@ -7,6 +7,12 @@ function unzipImage {
   tar xvf $IMAGE
 }
 
+function loadImages {
+  cd images
+  tar xf ibm-cloud-private-rhos-3.2.0.1906.tar.gz -O | sudo docker load
+  cd ..
+}
+
 function reconfigureDockerStorage {
   cat > /etc/sysconfig/docker-storage-setup << EOF
 STORAGE_DRIVER=devicemapper
@@ -38,15 +44,16 @@ function installICP {
 
 CUR_DIR=`pwd`
 
-reconfigureDockerStorage
+#reconfigureDockerStorage
 
 cd $IMAGE_DIR
 #unzipImage
 
 cd installer_files/cluster
+loadImages
 #copyConfig
 #configureAccessToRegistry
-installICP
+#installICP
 
  #### Deprecated stuff
 
