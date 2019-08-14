@@ -8,8 +8,10 @@ function unzipImage {
 }
 
 function copyConfig {
+  cd installer_files/cluster
   cp config.yaml config.yaml.original
   cp $CUR_DIR/config.yaml .
+  cd -
 }
 
 function installICP {
@@ -24,7 +26,6 @@ CUR_DIR=`pwd`
 cd $IMAGE_DIR
 #unzipImage
 
-cd installer_files/cluster
 #copyConfig
 installICP
 
