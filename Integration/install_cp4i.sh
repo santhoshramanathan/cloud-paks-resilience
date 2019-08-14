@@ -9,7 +9,7 @@ function unzipImage {
 
 function reconfigureDockerStorage {
   cat > /etc/sysconfig/docker-storage-setup << EOF
-STORAGE_DRIVER=overlay2
+STORAGE_DRIVER=devicemapper
 DEVS=/dev/xvdc
 VG=docker_vg
 EOF
