@@ -37,6 +37,10 @@ function configureAccessToRegistry {
   kubectl port-forward svc/docker-registry 5000 -n default &
 }
 
+function defineKubeConfig {
+  oc config view > kubeconfig  
+}
+
 function installICP {
   docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z \
     -v /var/run:/var/run:z --security-opt label:disable \
@@ -54,6 +58,7 @@ cd installer_files/cluster
 #loadImages
 #copyConfig
 #configureAccessToRegistry
+defineKubeConfig
 installICP
 
  #### Deprecated stuff
