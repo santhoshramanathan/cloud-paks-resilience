@@ -15,7 +15,9 @@ VG=docker_vg
 EOF
   rm /etc/sysconfig/docker-storage
 
+
   systemctl restart docker-storage-setup
+  systemctl restart docker
 }
 
 function copyConfig {
