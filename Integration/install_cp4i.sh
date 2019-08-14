@@ -36,7 +36,7 @@ function installICP {
 
 CUR_DIR=`pwd`
 
-#reconfigureDockerStorage
+reconfigureDockerStorage
 
 cd $IMAGE_DIR
 #unzipImage
