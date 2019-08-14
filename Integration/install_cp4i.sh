@@ -72,7 +72,7 @@ function reTagImages {
   for i in *
   do
     echo Retagging $i
-    0docker tag $i
+    docker tag $i
 }
 
 function loadImages {
