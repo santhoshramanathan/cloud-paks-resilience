@@ -1,10 +1,10 @@
 IMAGE_DIR=/images/Integration/3.1
-IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.1-for-OpenShift.tar.gz
+IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.1-for-OpenShift.tar
 
 function unzipImage {
   echo Unzipping image...
   cd $IMAGE_DIR
-  tar xzvf $IMAGE
+  tar xvf $IMAGE
 }
 
 unzipImage
