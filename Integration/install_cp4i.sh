@@ -1,3 +1,13 @@
+IMAGE_DIR=/images/Integration/3.1
+IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.1-for-OpenShift.tar.gz
+
+function unzipImage {
+  echo Unzipping image...
+  cd $IMAGE_DIR
+  tar xzvf $IMAGE
+}
+
+unzipImage
 
 
 
@@ -15,16 +25,8 @@ INSTALL_DIR=/images/Integration/2019.3.1/installer_files/cluster/icp4icontent
 APIC=IBM-API-Connect-Enterprise-for-IBM-Cloud-Pak-for-Integration-1.0.1.tgz
 APIC_CHART=ibm-apiconnect-icp4i-prod-1.0.1.tgz
 WORK_DIR=/root/work_cp4i
-IMAGE_DIR=/images/Integration/2019.3.1
-IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.1-for-OpenShift.tar.gz
 REGISTRY_NAME=docker-registry
 REGISTRY_URL=docker-registry.default.svc:5000
-
-function unzipImage {
-  echo Unzipping image...
-  cd $IMAGE_DIR
-  tar xzvf $IMAGE
-}
 
 function createProject {
   echo Creating project...
@@ -100,8 +102,6 @@ function installAPIC {
   oc apply --recursive --filename resources
 }
 
-
-#unzipImage
 
 #createProject
 #updateSCC
