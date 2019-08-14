@@ -24,7 +24,7 @@ function copyConfig {
 
 function configureAccessToRegistry {
   echo 127.0.0.1 docker-registry.default.svc localhost > /etc/hosts
-  kubectl port-forward svc/docker-registry 5000 &
+  kubectl port-forward svc/docker-registry 5000 -n default &
 }
 
 function installICP {
