@@ -1,0 +1,121 @@
+# Licensed Materials - Property of IBM
+# IBM Cloud private
+# @ Copyright IBM Corp. 2019 All Rights Reserved
+# US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+
+---
+
+# A list of OpenShift nodes that used to run ICP components
+cluster_nodes:
+  master:
+    - 10.148.56.8
+  proxy:
+    - 10.188.203.78
+  management:
+    - 10.191.118.154
+
+storage_class: ibmc-block-bronze
+
+openshift:
+  console:
+    host: console.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+    port: 443
+  router:
+    cluster_host: icp-console.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+    proxy_host: icp-proxy.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+
+default_admin_password: passw0rd
+password_rules:
+- '(.*)'
+
+## You must have different ports if you deploy nginx ingress to OpenShift master node
+# ingress_http_port: 80
+# ingress_https_port: 443
+
+kubernetes_cluster_type: openshift
+## You can disable following services if they are not needed
+## Disabling services may impact the installation of IBM CloudPaks.
+## Proceed with caution and refer to the Knowledge Center document for specific considerations.
+# auth-idp
+# auth-pap
+# auth-pdp
+# catalog-ui
+# helm-api
+# helm-repo
+# icp-management-ingress
+# metering
+# metrics-server
+# mgmt-repo
+# monitoring
+# nginx-ingress
+# platform-api
+# platform-ui
+# secret-watcher
+# security-onboarding
+# web-terminal
+
+management_services:
+  monitoring: enabled
+  metering: enabled
+  logging: enabled
+  custom-metrics-adapter: disabled
+  platform-pod-security: enabled
+
+archive_addons:
+  icp4i:
+    namespace: integration
+    repo: local-charts
+    path: icp4icontent/IBM-Cloud-Pak-for-Integration-2.0.0.tgz
+    scc: ibm-anyuid-scc
+
+    charts:
+    - name: ibm-icp4i-prod
+      pullSecretValue: image.pullSecret
+      values:
+        image:
+          pullSecret: sa-integration
+        tls:
+          hostname: icp-proxy.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+          generate: true
+
+  mq:
+    namespace: mq
+    repo: local-charts
+    path: icp4icontent/IBM-MQ-Advanced-for-IBM-Cloud-Pak-for-Integration-3.0.0.tgz
+    scc: ibm-anyuid-scc
+
+  ace:
+    namespace: ace
+    repo: local-charts
+    path: icp4icontent/IBM-App-Connect-Enterprise-for-IBM-Cloud-Pak-for-Integration-2.0.0.tgz
+    scc: ibm-anyuid-scc
+
+  eventstreams:
+    namespace: eventstreams
+    repo: local-charts
+    path: icp4icontent/IBM-Event-Streams-for-IBM-Cloud-Pak-for-Integration-1.3.1-for-OpenShift.tgz
+    scc: ibm-restricted-scc
+
+  apic:
+    namespace: apic
+    repo: local-charts
+    path: icp4icontent/IBM-API-Connect-Enterprise-for-IBM-Cloud-Pak-for-Integration-1.0.1.tgz
+    scc: ibm-anyuid-hostpath-scc
+
+  aspera:
+    namespace: aspera
+    repo: local-charts
+    path: icp4icontent/IBM-Aspera-High-Speed-Transfer-Server-for-IBM-Cloud-Pak-for-Integration-1.2.1.tgz
+    scc: ibm-anyuid-hostaccess-scc
+
+  datapower:
+    namespace: datapower
+    repo: local-charts
+    path: icp4icontent/IBM-DataPower-Virtual-Edition-for-IBM-Cloud-Pak-for-Integration-1.0.3.tgz
+    scc: ibm-anyuid-scc
+
+  assetrepo:
+    namespace: integration
+    repo: local-charts
+    path: icp4icontent/IBM-Cloud-Pak-for-Integration-Asset-Repository-2.0.0.tgz
+    scc: ibm-anyuid-scc
