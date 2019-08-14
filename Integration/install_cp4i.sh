@@ -9,6 +9,7 @@ function unzipImage {
 
 function reconfigureDockerStorage {
   cat > /etc/sysconfig/docker-storage-setup << EOF
+STORAGE_DRIVER=overlay2
 DEVS=/dev/xvdc
 VG=docker_vg
 EOF
@@ -42,7 +43,7 @@ cd $IMAGE_DIR
 
 cd installer_files/cluster
 #copyConfig
-configureAccessToRegistry
+#configureAccessToRegistry
 installICP
 
  #### Deprecated stuff
