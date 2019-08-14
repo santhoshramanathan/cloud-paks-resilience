@@ -12,6 +12,8 @@ function reconfigureDockerStorage {
 DEVS=/dev/xvdc
 VG=docker_vg
 EOF
+
+  systemctl restart docker-storage-setup
 }
 
 function copyConfig {
