@@ -57,9 +57,9 @@ EOF
 }
 
 function createCRB {
-  kubectl create clusterrolebinding admin-on-zen --clusterrole=admin --user=system:serviceaccount:zen:default  -n zen  
+  kubectl create clusterrolebinding admin-on-zen --clusterrole=admin --user=system:serviceaccount:zen:default  -n zen
 }
 
 #download
-createProject
+#createProject
 #applySCC

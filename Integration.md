@@ -16,9 +16,3 @@ Part Number:
 * Aspera High Speed Transfer Server, for large file transfers
 
 ## Pre-requisite
-
-### Install API Connect
-
-### Install apicup
-
-https://www.ibm.com/support/knowledgecenter/en/SSGT7J/install/install_api.html

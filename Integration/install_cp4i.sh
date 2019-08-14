@@ -1,3 +1,8 @@
+
+
+
+ #### Deprecated stuff
+
 PROJECT=cp4i
 
 #SCC=ibm-privileged-scc
@@ -102,14 +107,14 @@ function installAPIC {
 #updateSCC
 #addImagePullSecret
 
-cd $WORK_DIR
+#cd $WORK_DIR
 #unpackAPIC
 #defineRegistry
 #dockerLogin
-reTagImages
+#reTagImages
 #loadImages
 
-cd charts
+#cd charts
 #generateYAMLs
 #removeAPIC
 #installAPIC
