@@ -73,6 +73,7 @@ function reTagImages {
   do
     echo Retagging $i
     docker tag $i
+  done
 }
 
 function loadImages {
