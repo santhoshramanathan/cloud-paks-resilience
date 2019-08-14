@@ -12,7 +12,7 @@ function reconfigureDockerStorage {
 DEVS=/dev/xvdc
 VG=docker_vg
 EOF
-  rm /etc/sysconfig/docker-storage 
+  rm /etc/sysconfig/docker-storage
 
   systemctl restart docker-storage-setup
 }
@@ -20,6 +20,11 @@ EOF
 function copyConfig {
   cp config.yaml config.yaml.original
   cp $CUR_DIR/config.yaml .
+}
+
+function configureAccessToRegistry {
+  echo 127.0.0.1 docker-registry.default.svc localhost > /etc/hosts
+  kubectl port-forward svc/docker-registry 5000 &
 }
 
 function installICP {
@@ -30,13 +35,14 @@ function installICP {
 
 CUR_DIR=`pwd`
 
-reconfigureDockerStorage
+#reconfigureDockerStorage
 
 cd $IMAGE_DIR
 #unzipImage
 
 cd installer_files/cluster
 #copyConfig
+configureAccessToRegistry
 installICP
 
  #### Deprecated stuff
