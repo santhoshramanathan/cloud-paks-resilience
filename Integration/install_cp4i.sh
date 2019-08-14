@@ -7,6 +7,13 @@ function unzipImage {
   tar xvf $IMAGE
 }
 
+function reconfigureDockerStorage {
+  cat > /etc/sysconfig/docker-storage-setup << EOF
+DEVS=/dev/xvdc
+VG=docker_vg
+EOF
+}
+
 function copyConfig {
   cp config.yaml config.yaml.original
   cp $CUR_DIR/config.yaml .
@@ -19,6 +26,8 @@ function installICP {
 }
 
 CUR_DIR=`pwd`
+
+reconfigureDockerStorage
 
 cd $IMAGE_DIR
 #unzipImage
