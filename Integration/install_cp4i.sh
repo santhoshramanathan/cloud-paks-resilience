@@ -12,6 +12,7 @@ function reconfigureDockerStorage {
 DEVS=/dev/xvdc
 VG=docker_vg
 EOF
+  rm /etc/sysconfig/docker-storage 
 
   systemctl restart docker-storage-setup
 }
