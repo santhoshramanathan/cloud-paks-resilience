@@ -45,7 +45,7 @@ function defineKubeConfig {
 function patchPVC {
   echo Patching Mongo PVC
   oc -n kube-system delete pvc $MONGO_PVC
-  oc create -f mongo-pvc.yaml
+  oc create -f $CUR_DIR/mongo-pvc.yaml
 }
 
 function installICP {
