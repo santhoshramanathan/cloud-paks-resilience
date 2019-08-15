@@ -74,5 +74,5 @@ copyConfig
 #configureAccessToRegistry
 defineKubeConfig
 #uninstallICP
-patchPVC
+#patchPVC
 installICP
