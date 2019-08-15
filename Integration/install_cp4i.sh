@@ -77,5 +77,5 @@ cd installer_files/cluster
 copyConfig
 #configureAccessToRegistry
 defineKubeConfig
-uninstallICP
+#uninstallICP
 installICP
