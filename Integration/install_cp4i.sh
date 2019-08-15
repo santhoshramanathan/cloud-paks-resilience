@@ -8,6 +8,11 @@ function unzipImage {
   tar xvf $IMAGE
 }
 
+function configureAccessToRegistry {
+#  echo 127.0.0.1 docker-registry.default.svc localhost > /etc/hosts
+  kubectl port-forward svc/docker-registry 5000 -n default &
+}
+
 function loadImages {
   echo Loading images...
   cd images
@@ -31,11 +36,6 @@ EOF
 function copyConfig {
   cp config.yaml config.yaml.original
   cp $CUR_DIR/config.yaml .
-}
-
-function configureAccessToRegistry {
-  echo 127.0.0.1 docker-registry.default.svc localhost > /etc/hosts
-  kubectl port-forward svc/docker-registry 5000 -n default &
 }
 
 function defineKubeConfig {
@@ -73,9 +73,9 @@ cd $IMAGE_DIR
 #unzipImage
 
 cd installer_files/cluster
-#loadImages
+configureAccessToRegistry
+loadImages
 copyConfig
-#configureAccessToRegistry
 defineKubeConfig
 #uninstallICP
 installICP
