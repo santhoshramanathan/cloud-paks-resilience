@@ -14,5 +14,3 @@ Part Number:
 * Event Streams, for event handling based on Kafka
 * DataPower Gateway, for gateway services.
 * Aspera High Speed Transfer Server, for large file transfers
-
-## Pre-requisite

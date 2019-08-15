@@ -1,6 +1,7 @@
 IMAGE_DIR=/images/Integration/3.1
 IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.1-for-OpenShift.tar
 WORK_DIR=/root/work_cp4i
+MONGO_PVC=mongodbdir-icp-mongodb-0
 
 function unzipImage {
   echo Unzipping image...
@@ -41,11 +42,15 @@ function defineKubeConfig {
   oc config view > kubeconfig
 }
 
+function patchPVC {
+  oc delete -n kube-system delete pvc $MONGO_PVC
+  oc create -f mongo-pvc.yaml
+}
+
 function installICP {
   docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z \
     -v /var/run:/var/run:z --security-opt label:disable \
-    ibmcom/icp-inception-amd64:3.2.0.1906-rhel-ee install-with-openshift 2>&1 |
-    tee /tmp/install.log
+    ibmcom/icp-inception-amd64:3.2.0.1906-rhel-ee install-with-openshift
 }
 
 CUR_DIR=`pwd`
@@ -58,6 +63,7 @@ cd $IMAGE_DIR
 cd installer_files/cluster
 #loadImages
 #copyConfig
-configureAccessToRegistry
-defineKubeConfig
-installICP
+#configureAccessToRegistry
+#defineKubeConfig
+patchPVC
+#installICP
