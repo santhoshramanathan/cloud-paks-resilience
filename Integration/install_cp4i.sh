@@ -70,9 +70,9 @@ cd $IMAGE_DIR
 
 cd installer_files/cluster
 #loadImages
-#copyConfig
+copyConfig
 #configureAccessToRegistry
-#defineKubeConfig
+defineKubeConfig
 #uninstallICP
 patchPVC
 installICP
