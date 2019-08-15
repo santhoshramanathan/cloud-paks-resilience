@@ -78,4 +78,4 @@ cd installer_files/cluster
 copyConfig
 defineKubeConfig
 uninstallICP
-installICP
+#installICP
