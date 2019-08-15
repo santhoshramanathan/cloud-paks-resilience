@@ -73,9 +73,9 @@ cd $IMAGE_DIR
 #unzipImage
 
 cd installer_files/cluster
-configureAccessToRegistry
-loadImages
+#configureAccessToRegistry
+#loadImages
 copyConfig
 defineKubeConfig
-#uninstallICP
+uninstallICP
 installICP
