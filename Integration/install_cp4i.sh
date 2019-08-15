@@ -73,6 +73,6 @@ cd installer_files/cluster
 #copyConfig
 #configureAccessToRegistry
 #defineKubeConfig
-uninstallICP
-#patchPVC
-#installICP
+#uninstallICP
+patchPVC
+installICP
