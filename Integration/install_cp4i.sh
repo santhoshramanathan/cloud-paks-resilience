@@ -42,6 +42,13 @@ function defineKubeConfig {
   oc config view > kubeconfig
 }
 
+function uninstallICP {
+  docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z \
+    -v /var/run:/var/run:z --security-opt label:disable \
+    ibmcom/icp-inception-amd64:3.2.0.1906-rhel-ee uninstall-with-openshift
+}
+
+
 function patchPVC {
   echo Patching Mongo PVC
   oc -n kube-system delete pvc $MONGO_PVC
@@ -66,5 +73,6 @@ cd installer_files/cluster
 #copyConfig
 #configureAccessToRegistry
 #defineKubeConfig
+uninstallICP
 #patchPVC
-installICP
+#installICP
