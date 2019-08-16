@@ -42,10 +42,15 @@ function defineKubeConfig {
   oc config view > kubeconfig
 }
 
+function createSymbolicLink {
+  echo Creating symbolic link...
+  ln -s $INSTALLER_FILES_DIR installer
+}
+
 function uninstallICP {
   echo Uninstalling ICP...
   docker run -t --net=host -e LICENSE=accept \
-    -v $INSTALLER_FILES_DIR:/installer/cluster:z -v /var/run:/var/run:z \
+    -v installer:/installer/cluster:z -v /var/run:/var/run:z \
     --security-opt label:disable \
     ibmcom/icp-inception-amd64:3.2.0.1906-rhel-ee uninstall-with-openshift
 }
@@ -61,7 +66,7 @@ function patchPVC {
 function installICP {
   echo Installing ICP from `pwd`...
   docker run -t --net=host -e LICENSE=accept \
-    -v $INSTALLER_FILES_DIR:/installer/cluster:z -v /var/run:/var/run:z \
+    -v installer:/installer/cluster:z -v /var/run:/var/run:z \
     --security-opt label:disable \
     ibmcom/icp-inception-amd64:3.2.0.1906-rhel-ee install-with-openshift \
     2>&1 | tee /tmp/install.log
@@ -80,5 +85,6 @@ configureAccessToRegistry
 cd $WORK_DIR
 copyConfig
 defineKubeConfig
+createSymbolicLink
 uninstallICP
 installICP
