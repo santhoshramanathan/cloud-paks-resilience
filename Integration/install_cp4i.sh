@@ -77,12 +77,11 @@ CUR_DIR=`pwd`
 
 #reconfigureDockerStorage
 
-
 configureAccessToRegistry
-loadImages
 
 cd $WORK_DIR
 #unzipImage
+loadImages
 copyConfig
 defineKubeConfig
 
