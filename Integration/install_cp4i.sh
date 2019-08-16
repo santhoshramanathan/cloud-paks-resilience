@@ -59,7 +59,7 @@ function patchPVC {
 }
 
 function installICP {
-  echo Installing ICP...
+  echo Installing ICP from `pwd`...
   docker run -t --net=host -e LICENSE=accept \
     -v $INSTALLER_FILES_DIR:/installer/cluster:z -v /var/run:/var/run:z \
     --security-opt label:disable \
