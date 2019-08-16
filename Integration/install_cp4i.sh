@@ -73,7 +73,7 @@ cd $IMAGE_DIR
 #unzipImage
 
 cd installer_files/cluster
-#configureAccessToRegistry
+configureAccessToRegistry
 #loadImages
 copyConfig
 defineKubeConfig
