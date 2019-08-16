@@ -58,7 +58,7 @@ function patchPVC {
 }
 
 function installICP {
-  echo Installing ICP..
+  echo Installing ICP...
   docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z \
     -v /var/run:/var/run:z --security-opt label:disable \
     ibmcom/icp-inception-amd64:3.2.0.1906-rhel-ee install-with-openshift \
@@ -74,7 +74,7 @@ cd $IMAGE_DIR
 
 cd installer_files/cluster
 configureAccessToRegistry
-#loadImages
+loadImages
 copyConfig
 defineKubeConfig
 uninstallICP
