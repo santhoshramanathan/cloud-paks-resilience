@@ -77,5 +77,5 @@ configureAccessToRegistry
 #loadImages
 copyConfig
 defineKubeConfig
-uninstallICP
+#uninstallICP
 installICP
