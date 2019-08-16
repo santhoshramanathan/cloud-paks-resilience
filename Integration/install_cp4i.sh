@@ -16,9 +16,8 @@ function configureAccessToRegistry {
 
 function loadImages {
   echo Loading images...
-  cd images
+  cd $INSTALLER_FILES_DIR/images
   tar xf ibm-cloud-private-rhos-3.2.0.1906.tar.gz -O | sudo docker load
-  cd ..
 }
 
 function reconfigureDockerStorage {
@@ -75,9 +74,10 @@ CUR_DIR=`pwd`
 cd $IMAGE_DIR
 #unzipImage
 
-cd $WORK_DIR
 configureAccessToRegistry
-loadImages
+#loadImages
+
+cd $WORK_DIR
 copyConfig
 defineKubeConfig
 uninstallICP
