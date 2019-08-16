@@ -2,6 +2,7 @@ IMAGE_DIR=/images/Integration/3.1
 IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.1-for-OpenShift.tar
 WORK_DIR=/root/work_cp4i
 MONGO_PVC=mongodbdir-icp-mongodb-0
+INSTALLER_FILES_DIR=$IMAGE_DIR/installer_files/cluster
 
 function unzipImage {
   echo Unzipping image...
@@ -44,8 +45,9 @@ function defineKubeConfig {
 
 function uninstallICP {
   echo Uninstalling ICP...
-  docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z \
-    -v /var/run:/var/run:z --security-opt label:disable \
+  docker run -t --net=host -e LICENSE=accept \
+    -v $INSTALLER_FILES_DIR:/installer/cluster:z -v /var/run:/var/run:z \
+    --security-opt label:disable \
     ibmcom/icp-inception-amd64:3.2.0.1906-rhel-ee uninstall-with-openshift
 }
 
@@ -59,8 +61,9 @@ function patchPVC {
 
 function installICP {
   echo Installing ICP...
-  docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z \
-    -v /var/run:/var/run:z --security-opt label:disable \
+  docker run -t --net=host -e LICENSE=accept \
+    -v $INSTALLER_FILES_DIR:/installer/cluster:z -v /var/run:/var/run:z \
+    --security-opt label:disable \
     ibmcom/icp-inception-amd64:3.2.0.1906-rhel-ee install-with-openshift \
     2>&1 | tee /tmp/install.log
 }
@@ -72,7 +75,7 @@ CUR_DIR=`pwd`
 cd $IMAGE_DIR
 #unzipImage
 
-cd installer_files/cluster
+cd $WORK_DIR
 configureAccessToRegistry
 loadImages
 copyConfig
