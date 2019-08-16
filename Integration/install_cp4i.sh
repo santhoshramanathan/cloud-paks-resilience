@@ -79,7 +79,7 @@ CUR_DIR=`pwd`
 
 
 configureAccessToRegistry
-#loadImages
+loadImages
 
 cd $WORK_DIR
 #unzipImage
