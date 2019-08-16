@@ -82,7 +82,7 @@ configureAccessToRegistry
 #loadImages
 
 cd $WORK_DIR
-unzipImage
+#unzipImage
 copyConfig
 defineKubeConfig
 
