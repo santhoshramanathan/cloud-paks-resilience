@@ -6,7 +6,7 @@ INSTALLER_FILES_DIR=$IMAGE_DIR/installer_files/cluster
 
 function unzipImage {
   echo Unzipping image...
-  tar xvf $IMAGE
+  tar xvf $IMAGE_DIR/$IMAGE
 }
 
 function configureAccessToRegistry {
@@ -76,13 +76,12 @@ CUR_DIR=`pwd`
 
 #reconfigureDockerStorage
 
-cd $IMAGE_DIR
-#unzipImage
 
 configureAccessToRegistry
 #loadImages
 
 cd $WORK_DIR
+unzipImage
 copyConfig
 defineKubeConfig
 createSymbolicLink
