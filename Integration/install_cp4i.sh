@@ -82,9 +82,9 @@ configureAccessToRegistry
 cd $WORK_DIR
 #unzipImage
 #loadImages
-copyConfig
-defineKubeConfig
 
 cd $INSTALLER_FILES_DIR
+copyConfig
+defineKubeConfig
 #uninstallICP
 installICP
