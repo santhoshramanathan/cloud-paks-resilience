@@ -1,8 +1,8 @@
 PROJECT=apic
-SCC=add-scc-to-user ibm-anyuid-hostpath-scc
+SCC=ibm-anyuid-hostpath-scc
 
 function createProject {
-  oc create project $PROJECT
+  oc new-project $PROJECT
 }
 
 function associateSCC {
