@@ -2,7 +2,7 @@ IMAGE_DIR=/images/Integration/3.1
 IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.1-for-OpenShift.tar
 WORK_DIR=/root/work_cp4i
 MONGO_PVC=mongodbdir-icp-mongodb-0
-INSTALLER_FILES_DIR=installer_files/cluster
+INSTALLER_FILES_DIR=/images/Integration/3.1/installer_files/cluster
 
 function unzipImage {
   echo Unzipping image...
@@ -81,7 +81,7 @@ CUR_DIR=`pwd`
 
 cd $WORK_DIR
 #unzipImage
-loadImages
+#loadImages
 
 cd $INSTALLER_FILES_DIR
 #copyConfig
