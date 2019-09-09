@@ -81,7 +81,7 @@ CUR_DIR=`pwd`
 
 #reconfigureDockerStorage
 
-#configureAccessToRegistry
+configureAccessToRegistry
 
 cd $WORK_DIR
 #unzipImage
