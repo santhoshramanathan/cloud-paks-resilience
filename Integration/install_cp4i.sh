@@ -85,6 +85,6 @@ cd $WORK_DIR
 
 cd $INSTALLER_FILES_DIR
 copyConfig
-#defineKubeConfig
+defineKubeConfig
 #uninstallICP
-#installICP
+installICP
