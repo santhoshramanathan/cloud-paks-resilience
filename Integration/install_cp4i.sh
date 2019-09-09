@@ -50,7 +50,7 @@ function installICP {
 
 CUR_DIR=`pwd`
 
-#reconfigureDockerStorage
+reconfigureDockerStorage
 
 cd $IMAGE_DIR
 #unzipImage
@@ -58,6 +58,6 @@ cd $IMAGE_DIR
 cd installer_files/cluster
 #loadImages
 #copyConfig
-configureAccessToRegistry
-defineKubeConfig
-installICP
+#configureAccessToRegistry
+#defineKubeConfig
+#installICP
