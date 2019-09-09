@@ -22,7 +22,7 @@ function loadImages {
 
 function reconfigureDockerStorage {
   cat > /etc/sysconfig/docker-storage-setup << EOF
-STORAGE_DRIVER=devicemapper
+STORAGE_DRIVER=overlay2
 DEVS=/dev/xvdc
 VG=docker_vg
 EOF
