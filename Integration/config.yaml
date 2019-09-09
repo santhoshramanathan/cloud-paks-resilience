@@ -8,27 +8,21 @@
 # A list of OpenShift nodes that used to run ICP components
 cluster_nodes:
   master:
-    - 10.148.56.8
-    - 10.188.203.78
     - 10.191.118.154
   proxy:
-    - 10.148.56.8
-    - 10.188.203.78
-    - 10.191.118.154
+    - 10.191.118.158
   management:
-    - 10.188.203.105
-    - 10.148.56.33
-    - 10.191.118.177
+    - 10.191.118.174
 
 storage_class: ibmc-block-bronze
 
 openshift:
   console:
-    host: console.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+    host: c100-e.us-east.containers.cloud.ibm.com
     port: 443
   router:
-    cluster_host: icp-console.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
-    proxy_host: icp-proxy.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+    cluster_host: icp-console.c100-e.us-east.containers.cloud.ibm.com
+    proxy_host: icp-proxy.c100-e.us-east.containers.cloud.ibm.com
 
 default_admin_password: passw0rd
 password_rules:
