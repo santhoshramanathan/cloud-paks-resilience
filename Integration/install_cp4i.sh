@@ -85,11 +85,11 @@ CUR_DIR=`pwd`
 
 cd $WORK_DIR
 #unzipImage
-loginToDocker
-loadImages
+#loginToDocker
+#loadImages
 
 cd $INSTALLER_FILES_DIR
 #copyConfig
 #defineKubeConfig
 #uninstallICP
-#installICP
+installICP
