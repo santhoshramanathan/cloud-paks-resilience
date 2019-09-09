@@ -80,8 +80,8 @@ CUR_DIR=`pwd`
 #configureAccessToRegistry
 
 cd $WORK_DIR
-unzipImage
-#loadImages
+#unzipImage
+loadImages
 
 cd $INSTALLER_FILES_DIR
 #copyConfig
