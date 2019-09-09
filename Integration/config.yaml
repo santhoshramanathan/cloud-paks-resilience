@@ -18,11 +18,11 @@ storage_class: ibmc-block-bronze
 
 openshift:
   console:
-    host: c100-e.us-east.containers.cloud.ibm.com
+    host: patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
     port: 443
   router:
-    cluster_host: icp-console.c100-e.us-east.containers.cloud.ibm.com
-    proxy_host: icp-proxy.c100-e.us-east.containers.cloud.ibm.com
+    cluster_host: icp-console.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+    proxy_host: icp-proxy.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
 
 default_admin_password: passw0rd
 password_rules:
