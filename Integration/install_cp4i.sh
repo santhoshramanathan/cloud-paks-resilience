@@ -14,6 +14,10 @@ function configureAccessToRegistry {
   kubectl port-forward svc/docker-registry 5000 -n default &
 }
 
+function loginToDocker {
+  docker login -u openshift -p $(oc whoami -t) docker-registry.default.svc:5000
+}
+
 function loadImages {
   echo Loading images...
   cd $INSTALLER_FILES_DIR/images
@@ -81,10 +85,11 @@ CUR_DIR=`pwd`
 
 cd $WORK_DIR
 #unzipImage
-#loadImages
+loginToDocker
+loadImages
 
 cd $INSTALLER_FILES_DIR
-copyConfig
-defineKubeConfig
+#copyConfig
+#defineKubeConfig
 #uninstallICP
-installICP
+#installICP
