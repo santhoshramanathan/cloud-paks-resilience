@@ -85,8 +85,8 @@ configureAccessToRegistry
 
 cd $WORK_DIR
 #unzipImage
-#loginToDocker
-#loadImages
+loginToDocker
+loadImages
 
 cd $INSTALLER_FILES_DIR
 #copyConfig
