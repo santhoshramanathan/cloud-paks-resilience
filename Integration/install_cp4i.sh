@@ -69,6 +69,7 @@ function patchPVC {
   oc create -f $CUR_DIR/mongo-pvc.yaml
 }
 
+# Deprecated
 function createRoute {
   oc create route reencrypt --service=docker-registry \
   --hostname=docker-registry.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
@@ -79,7 +80,7 @@ function installICP {
   docker run -t --net=host -e LICENSE=accept \
     -v $(pwd):/installer/cluster:z -v /var/run:/var/run:z \
     --security-opt label:disable \
-    ibmcom/icp-inception-amd64:3.2.0.1906-rhel-ee install-with-openshift \
+    ibmcom/icp-inception-amd64:3.2.0.1906-rhel-ee install-with-openshift -vvv \
     2>&1 | tee /tmp/install.log
 }
 
