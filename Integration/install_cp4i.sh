@@ -21,7 +21,7 @@ function loginToDocker {
 function loadImages {
   echo Loading images...
   cd $INSTALLER_FILES_DIR/images
-  tar xf ibm-cloud-private-rhos-3.2.0.1906.tar.gz -O | sudo docker load
+  tar xf ibm-cloud-private-rhos-3.2.0.1906.tar.gz -O | sudo docker load 2>&1 | tee /tmp/images.log
 }
 
 function reconfigureDockerStorage {
