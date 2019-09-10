@@ -69,6 +69,11 @@ function patchPVC {
   oc create -f $CUR_DIR/mongo-pvc.yaml
 }
 
+function createRoute {
+  oc create route --service=docker-registry \
+  --hostname=docker-registry.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud reencypt
+}
+
 function installICP {
   echo Installing ICP from `pwd`...
   docker run -t --net=host -e LICENSE=accept \
@@ -92,4 +97,5 @@ cd $INSTALLER_FILES_DIR
 copyConfig
 defineKubeConfig
 #uninstallICP
+createRoute
 installICP
