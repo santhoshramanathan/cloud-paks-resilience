@@ -14,6 +14,7 @@ function configureAccessToRegistry {
   kubectl port-forward svc/docker-registry 5000 -n default &
 }
 
+# Deprecated
 function loginToDocker {
   docker login -u openshift -p $(oc whoami -t) docker-registry.default.svc:5000
 }
@@ -85,11 +86,10 @@ configureAccessToRegistry
 
 cd $WORK_DIR
 #unzipImage
-loginToDocker
-loadImages
+#loadImages
 
 cd $INSTALLER_FILES_DIR
 copyConfig
 defineKubeConfig
-uninstallICP
+#uninstallICP
 installICP
