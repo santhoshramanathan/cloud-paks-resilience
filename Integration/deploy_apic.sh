@@ -3,7 +3,7 @@ SCC=ibm-anyuid-hostpath-scc
 IMAGE_SECRET=myregistrykey
 CLUSTER_DOMAIN=docker-registry-default.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
 ICP_PASSWORD=passw0rd
-CLUSTER_IP=https://icp-console.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+CLUSTER_IP=icp-console.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
 
 function createProject {
   oc new-project $PROJECT
