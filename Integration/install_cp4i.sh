@@ -70,8 +70,8 @@ function patchPVC {
 }
 
 function createRoute {
-  oc create route --service=docker-registry \
-  --hostname=docker-registry.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud reencypt
+  oc create route reencrypt --service=docker-registry \
+  --hostname=docker-registry.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
 }
 
 function installICP {
@@ -97,5 +97,5 @@ cd $INSTALLER_FILES_DIR
 copyConfig
 defineKubeConfig
 #uninstallICP
-createRoute
-#installICP
+#createRoute
+installICP
