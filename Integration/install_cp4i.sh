@@ -84,12 +84,12 @@ CUR_DIR=`pwd`
 configureAccessToRegistry
 
 cd $WORK_DIR
-unzipImage
-#loginToDocker
-#loadImages
+#unzipImage
+loginToDocker
+loadImages
 
 cd $INSTALLER_FILES_DIR
-#copyConfig
-#defineKubeConfig
+copyConfig
+defineKubeConfig
 uninstallICP
 installICP
