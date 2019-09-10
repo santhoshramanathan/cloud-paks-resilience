@@ -98,4 +98,4 @@ copyConfig
 defineKubeConfig
 #uninstallICP
 createRoute
-installICP
+#installICP
