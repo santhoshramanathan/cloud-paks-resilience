@@ -9,7 +9,7 @@ cpus = 0
 mems = 0
 
 while True:
-  line = process.stdout.readline()
+  line = process.stdout.readline().decode()
   if line != '':
       print(line)
       info= line.split()
