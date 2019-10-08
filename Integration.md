@@ -2,7 +2,7 @@
 
 Documentation: https://www.ibm.com/cloud/cloud-pak-for-integration
 
-Knowledge Center: https://www.ibm.com/support/knowledgecenter/SSGT7J/welcome.html
+Knowledge Center: https://www.ibm.com/support/knowledgecenter/SSGT7J
 
 Deployment Guide: https://pages.github.ibm.com/CASE/cloudpak-onboard-residency/integration/introduction/
 
