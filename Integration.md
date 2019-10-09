@@ -16,3 +16,9 @@ Deployment Guide: https://pages.github.ibm.com/CASE/cloudpak-onboard-residency/i
 * Aspera High Speed Transfer Server, for large file transfers
 
 # Sizing
+
+| Phase | CPU | Memory |
+|---|---|---|
+| Before CP for Integration | 2445m | 13249Mi |
+| After install IBM Cloud Private with OpenShift | 3253m | 23200Mi |
+| *Delta* | 808m | 9951Mi |
