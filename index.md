@@ -2,5 +2,5 @@
 
 Guidance for IBM Cloud Paks for Sizing, Resilience, Performance, etc
 
-* [Integration](Integration.md)
-* [Data](Data.md)
+* [Integration](Integration/index.md)
+* [Data](Data/index.md)
