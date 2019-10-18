@@ -17,8 +17,10 @@ Deployment Guide: https://pages.github.ibm.com/CASE/cloudpak-onboard-residency/i
 
 # Sizing
 
+## Version 3.2
+
 | Phase | CPU | Memory |
 |---|---|---|
-| Before CP for Integration | 2445m | 13249Mi |
-| After install IBM Cloud Private with OpenShift | 3253m | 23200Mi |
-| *Delta* | 808m | 9951Mi |
+| Before CP for Integration | 2427m | 16121Mi |
+| After installing CP for Integration | 3491m | 22492Mi |
+| *Delta* | 1064m | 6371Mi |

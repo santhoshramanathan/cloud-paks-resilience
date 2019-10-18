@@ -72,7 +72,7 @@ function patchPVC {
 # Deprecated
 function createRoute {
   oc create route reencrypt --service=docker-registry \
-  --hostname=docker-registry.patrocinio-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  --hostname=docker-registry.patrocinio3-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
 }
 
 function installICP {
