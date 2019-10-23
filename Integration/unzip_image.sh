@@ -8,9 +8,12 @@ function unzipImage {
   tar xvf $IMAGE_DIR/$IMAGE
 }
 
-function installOC {
+function downloadOC {
   wget https://github.com/openshift/origin/releases/download/v3.11.0/$OPENSHIFT_CLIENT
-  tar xvf $OPENSHIFT_CLIENT
+}
+
+function installOC {
+  tar xvzf $OPENSHIFT_CLIENT
 }
 
 function listNodes {
@@ -21,6 +24,7 @@ function listNodes {
 mkdir -p $WORK_DIR
 cd $WORK_DIR
 #unzipImage
+#downloadOC
 installOC
 listNodes
 
