@@ -1,8 +1,8 @@
-IMAGE_DIR=/images/Integration/3.1
-IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.1-for-OpenShift.tar
-WORK_DIR=/root/work_cp4i
-MONGO_PVC=mongodbdir-icp-mongodb-0
-INSTALLER_FILES_DIR=/root/work_cp4i/installer_files/cluster
+IMAGE_DIR=/images/Integration/3.2
+IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.2.1-for-OpenShift.tar.gz
+#WORK_DIR=/root/work_cp4i
+#MONGO_PVC=mongodbdir-icp-mongodb-0
+#INSTALLER_FILES_DIR=/root/work_cp4i/installer_files/cluster
 
 function unzipImage {
   echo Unzipping image...
@@ -91,7 +91,7 @@ CUR_DIR=`pwd`
 #configureAccessToRegistry
 
 cd $WORK_DIR
-#unzipImage
+unzipImage
 #loadImages
 
 cd $INSTALLER_FILES_DIR
