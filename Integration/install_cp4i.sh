@@ -1,13 +1,6 @@
-IMAGE_DIR=/images/Integration/3.2
-IMAGE=ibm-cloud-pak-for-integration-x86_64-2019.3.2.1-for-OpenShift.tar.gz
 WORK_DIR=/root/work_cp4i
 #MONGO_PVC=mongodbdir-icp-mongodb-0
 #INSTALLER_FILES_DIR=/root/work_cp4i/installer_files/cluster
-
-function unzipImage {
-  echo Unzipping image...
-  tar xvf $IMAGE_DIR/$IMAGE
-}
 
 function configureAccessToRegistry {
 #  echo 127.0.0.1 docker-registry.default.svc localhost > /etc/hosts
@@ -92,7 +85,6 @@ CUR_DIR=`pwd`
 
 mkdir -p $WORK_DIR
 cd $WORK_DIR
-unzipImage
 #loadImages
 
 cd $INSTALLER_FILES_DIR

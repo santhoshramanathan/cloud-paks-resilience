@@ -7,6 +7,14 @@ function unzipImage {
   tar xvf $IMAGE_DIR/$IMAGE
 }
 
+function listNodes {
+  echo Listing nodes...
+  oc get nodes
+}
+
 mkdir -p $WORK_DIR
 cd $WORK_DIR
-unzipImage
+#unzipImage
+listNodes
+
+echo Now you are ready to configure config.yaml
