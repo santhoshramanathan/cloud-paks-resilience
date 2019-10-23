@@ -1,6 +1,5 @@
 WORK_DIR=/root/work_cp4i
-#MONGO_PVC=mongodbdir-icp-mongodb-0
-#INSTALLER_FILES_DIR=/root/work_cp4i/installer_files/cluster
+INSTALLER_FILES_DIR=$WORK_DIR/installer_files/cluster
 
 function configureAccessToRegistry {
 #  echo 127.0.0.1 docker-registry.default.svc localhost > /etc/hosts
@@ -15,7 +14,7 @@ function loginToDocker {
 function loadImages {
   echo Loading images...
   cd $INSTALLER_FILES_DIR/images
-  tar xf ibm-cloud-private-rhos-3.2.0.1906.tar.gz -O | sudo docker load 2>&1 | tee /tmp/images.log
+  tar xf ibm-cloud-private-rhos-3.2.0.1906.tar.gz -O | docker load 2>&1 | tee /tmp/images.log
 }
 
 function reconfigureDockerStorage {
@@ -85,7 +84,7 @@ CUR_DIR=`pwd`
 
 mkdir -p $WORK_DIR
 cd $WORK_DIR
-#loadImages
+loadImages
 
 cd $INSTALLER_FILES_DIR
 #copyConfig
