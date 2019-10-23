@@ -14,6 +14,8 @@ function downloadOC {
 
 function installOC {
   tar xvzf $OPENSHIFT_CLIENT
+  cd openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit
+  mv oc kubectl /usr/local/bin
 }
 
 function listNodes {
