@@ -7,6 +7,10 @@ function unzipImage {
   tar xvf $IMAGE_DIR/$IMAGE
 }
 
+function installOC {
+  wget v3.11.0-0cbc58b-linux-64bit.tar.gz
+}
+
 function listNodes {
   echo Listing nodes...
   oc get nodes
@@ -15,6 +19,7 @@ function listNodes {
 mkdir -p $WORK_DIR
 cd $WORK_DIR
 #unzipImage
+installOC
 listNodes
 
 echo Now you are ready to configure config.yaml
