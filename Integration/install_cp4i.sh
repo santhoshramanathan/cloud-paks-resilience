@@ -88,15 +88,15 @@ CUR_DIR=`pwd`
 
 #reconfigureDockerStorage
 
-configureAccessToRegistry
+#configureAccessToRegistry
 
 cd $WORK_DIR
 #unzipImage
 #loadImages
 
 cd $INSTALLER_FILES_DIR
-copyConfig
-defineKubeConfig
+#copyConfig
+#defineKubeConfig
 #uninstallICP
 #createRoute
-installICP
+#installICP
