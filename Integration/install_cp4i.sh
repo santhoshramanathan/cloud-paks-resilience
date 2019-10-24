@@ -1,8 +1,11 @@
 WORK_DIR=/root/work_cp4i
 INSTALLER_FILES_DIR=$WORK_DIR/installer_files/cluster
 
-function configureAccessToRegistry {
+function updateHost {
   echo 127.0.0.1 docker-registry.default.svc localhost > /etc/hosts
+}
+
+function configureAccessToRegistry {
   kubectl port-forward svc/docker-registry 5000 -n default &
 }
 
@@ -78,12 +81,13 @@ function installICP {
 CUR_DIR=`pwd`
 
 #reconfigureDockerStorage
-
+#updateHost
 configureAccessToRegistry
 
 mkdir -p $WORK_DIR
 cd $WORK_DIR
-loadImages
+#loadImages
+loginToDocker
 
 cd $INSTALLER_FILES_DIR
 #copyConfig
