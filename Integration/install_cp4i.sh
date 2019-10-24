@@ -20,20 +20,6 @@ function loadImages {
 }
 
 # Deprecated
-function reconfigureDockerStorage {
-  cat > /etc/sysconfig/docker-storage-setup << EOF
-STORAGE_DRIVER=overlay2
-DEVS=/dev/xvdc
-VG=docker_vg
-EOF
-  rm /etc/sysconfig/docker-storage
-
-
-  systemctl restart docker-storage-setup
-  systemctl restart docker
-}
-
-# Deprecated
 function copyConfig {
   cp config.yaml config.yaml.original
   cp $CUR_DIR/config.yaml .
@@ -82,7 +68,6 @@ function installICP {
 
 CUR_DIR=`pwd`
 
-#reconfigureDockerStorage
 #updateHost
 configureAccessToRegistry
 
