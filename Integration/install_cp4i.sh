@@ -2,7 +2,7 @@ WORK_DIR=/root/work_cp4i
 INSTALLER_FILES_DIR=$WORK_DIR/installer_files/cluster
 
 function configureAccessToRegistry {
-#  echo 127.0.0.1 docker-registry.default.svc localhost > /etc/hosts
+  echo 127.0.0.1 docker-registry.default.svc localhost > /etc/hosts
   kubectl port-forward svc/docker-registry 5000 -n default &
 }
 
@@ -79,7 +79,7 @@ CUR_DIR=`pwd`
 
 #reconfigureDockerStorage
 
-#configureAccessToRegistry
+configureAccessToRegistry
 
 mkdir -p $WORK_DIR
 cd $WORK_DIR
