@@ -2,6 +2,7 @@ WORK_DIR=/root/work_cp4i
 INSTALLER_FILES_DIR=$WORK_DIR/installer_files/cluster
 
 function updateHost {
+  echo Updating host
   echo 127.0.0.1 docker-registry.default.svc localhost > /etc/hosts
 }
 
@@ -68,7 +69,7 @@ function installICP {
 
 CUR_DIR=`pwd`
 
-#updateHost
+updateHost
 configureAccessToRegistry
 
 mkdir -p $WORK_DIR
