@@ -1,10 +1,8 @@
 # CP for Integration
 
-Documentation: https://www.ibm.com/cloud/cloud-pak-for-integration
+[Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSGT7J)
 
-Knowledge Center: https://www.ibm.com/support/knowledgecenter/SSGT7J
-
-Deployment Guide: https://pages.github.ibm.com/CASE/cloudpak-onboard-residency/integration/introduction/
+[Deployment Guide](https://cloudpak8s.io/integration/introduction/)
 
 # Areas
 
