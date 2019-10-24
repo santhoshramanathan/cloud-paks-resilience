@@ -19,6 +19,7 @@ function loadImages {
   tar xf ibm-cloud-private-rhos-3.2.0.1907.tar.gz -O | docker load 2>&1 | tee /tmp/images.log
 }
 
+# Deprecated
 function reconfigureDockerStorage {
   cat > /etc/sysconfig/docker-storage-setup << EOF
 STORAGE_DRIVER=overlay2
@@ -32,6 +33,7 @@ EOF
   systemctl restart docker
 }
 
+# Deprecated
 function copyConfig {
   cp config.yaml config.yaml.original
   cp $CUR_DIR/config.yaml .
@@ -90,8 +92,7 @@ cd $WORK_DIR
 loginToDocker
 
 cd $INSTALLER_FILES_DIR
-#copyConfig
-#defineKubeConfig
+defineKubeConfig
 #uninstallICP
 #createRoute
 #installICP
