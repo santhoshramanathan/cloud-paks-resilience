@@ -13,6 +13,14 @@
 * DataPower Gateway, for gateway services.
 * Aspera High Speed Transfer Server, for large file transfers
 
+# How to deploy CP for integration
+
+I created some simple scripts to deploy this CP:
+
+* [Unzip CP Image](unzip_image.sh)
+* [Install Docker](install_docker.sh)
+* [Install CP 4 Integration](install_cp4i.sh)
+
 # Sizing
 
 ## Version 3.2
