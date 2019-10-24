@@ -18,7 +18,7 @@ EOF
 
   wipefs -a $DEVICE
 
-  systemctl restart docker-storage-setup
+  systemctl restart docker-storage-setup -ff
   systemctl status docker-storage-setup
   systemctl restart docker
 
