@@ -16,9 +16,9 @@ VG=docker_vg
 EOF
   rm /etc/sysconfig/docker-storage
 
-  wipefs -a $DEVICE
+  wipefs --all --force $DEVICE
 
-  systemctl restart docker-storage-setup -ff
+  systemctl restart docker-storage-setup
   systemctl status docker-storage-setup
   systemctl restart docker
 
