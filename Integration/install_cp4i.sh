@@ -73,7 +73,7 @@ configureAccessToRegistry
 
 mkdir -p $WORK_DIR
 cd $WORK_DIR
-#loadImages
+loadImages
 loginToDocker
 
 cd $INSTALLER_FILES_DIR
