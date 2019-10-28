@@ -74,7 +74,7 @@ configureAccessToRegistry
 
 mkdir -p $WORK_DIR
 cd $WORK_DIR
-#unzipImage
+unzipImage
 loginToDocker
 loadImages
 
