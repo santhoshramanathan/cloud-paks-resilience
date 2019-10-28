@@ -17,7 +17,7 @@ function loginToDocker {
 function loadImages {
   echo Loading images...
   cd $INSTALLER_FILES_DIR/images
-  tar xf ibm-cloud-private-rhos-3.2.0.1907.tar.gz -O | docker load 2>&1 | tee /tmp/images.log
+  tar xf ibm-cloud-private-rhos-3.2.0.1908.tar.gz -O | docker load 2>&1 | tee /tmp/images.log
 }
 
 # Deprecated
@@ -63,7 +63,7 @@ function installICP {
   docker run -t --net=host -e LICENSE=accept \
     -v $(pwd):/installer/cluster:z -v /var/run:/var/run:z \
     --security-opt label:disable \
-    ibmcom/icp-inception-amd64:3.2.0.1907-rhel-ee install-with-openshift -vvv \
+    ibmcom/icp-inception-amd64:3.2.0.1908-rhel-ee install-with-openshift -vvv \
     2>&1 | tee /tmp/install.log
 }
 
