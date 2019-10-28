@@ -87,12 +87,11 @@ function installICP {
 CUR_DIR=`pwd`
 
 #reconfigureDockerStorage
-
 configureAccessToRegistry
 
 cd $WORK_DIR
 #unzipImage
-#loadImages
+loadImages
 
 cd $INSTALLER_FILES_DIR
 copyConfig
