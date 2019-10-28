@@ -75,7 +75,8 @@ configureAccessToRegistry
 mkdir -p $WORK_DIR
 cd $WORK_DIR
 #unzipImage
-#loadImages
+loginToDocker
+loadImages
 
 cd $INSTALLER_FILES_DIR
 defineKubeConfig
