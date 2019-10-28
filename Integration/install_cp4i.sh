@@ -17,7 +17,7 @@ function loginToDocker {
 function loadImages {
   echo Loading images...
   cd $INSTALLER_FILES_DIR/images
-  tar xf ibm-cloud-private-rhos-3.2.0.1908.tar.gz -O | docker load 2>&1 | tee /tmp/images.log
+  tar xf ibm-cloud-private-rhos-3.2.0.1907.tar.gz -O | docker load 2>&1 | tee /tmp/images.log
 }
 
 # Deprecated
