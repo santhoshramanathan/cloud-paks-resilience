@@ -7,10 +7,13 @@ function updateHost {
 }
 
 function configureAccessToRegistry {
+  echo Setting port forward
   kubectl port-forward svc/docker-registry 5000 -n default &
+  sleep 2
 }
 
 function loginToDocker {
+  eho Logging to Docker
   docker login -u openshift -p $(oc whoami -t) docker-registry.default.svc:5000
 }
 
