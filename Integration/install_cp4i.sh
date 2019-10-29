@@ -13,7 +13,7 @@ function configureAccessToRegistry {
 }
 
 function loginToDocker {
-  eho Logging to Docker
+  echo Logging to Docker
   docker login -u openshift -p $(oc whoami -t) docker-registry.default.svc:5000
 }
 
@@ -77,11 +77,11 @@ configureAccessToRegistry
 
 mkdir -p $WORK_DIR
 cd $WORK_DIR
-loginToDocker
-loadImages
+#loginToDocker
+#loadImages
 
 cd $INSTALLER_FILES_DIR
 defineKubeConfig
 #uninstallICP
-#createRoute
-#installICP
+createRoute
+installICP
