@@ -80,5 +80,5 @@ loadImages
 cd $INSTALLER_FILES_DIR
 defineKubeConfig
 #uninstallICP
-createRoute
-installICP
+#createRoute
+#installICP
