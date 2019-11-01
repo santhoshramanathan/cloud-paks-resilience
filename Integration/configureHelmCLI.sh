@@ -1,4 +1,4 @@
-MASTER_URL=https://icp-console.patrocinio4-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+MASTER_URL=https://icp-console.patrocinio6-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
 
 . ~/icp.sh
 

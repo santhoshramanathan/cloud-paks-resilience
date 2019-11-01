@@ -1,0 +1,37 @@
+analytics:
+  analyticsClientEndpoint: ac.icp-proxy.patrocinio4-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  analyticsIngestionEndpoint: ai.icp-proxy.patrocinio4-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  enableMessageQueue: false
+gateway:
+  apiGatewayEndpoint: gw.icp-proxy.patrocinio4-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  enableTms: false
+  gatewayServiceEndpoint: gwd.icp-proxy.patrocinio4-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  highPerformancePeering: false
+  replicaCount: 1
+  storageClass: ibmc-block-gold
+  v5CompatibilityMode: false
+global:
+  registry: docker-registry.default.svc:5000/apic
+  registrySecret: default-dockercfg-klld5
+  routingType: route
+  storageClass: ibmc-block-gold
+license: accept
+management:
+  apiManagerUiEndpoint: mgmt.icp-proxy.patrocinio4-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  cloudAdminUiEndpoint: mgmt.icp-proxy.patrocinio4-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  consumerApiEndpoint: mgmt.icp-proxy.patrocinio4-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  platformApiEndpoint: mgmt.icp-proxy.patrocinio4-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  storageClass: ibmc-block-gold
+operator:
+  helmTlsSecret: apic-ent-helm-tls
+  tiller:
+    useNodePort: false
+portal:
+  portalDirectorEndpoint: padmin.icp-proxy.patrocinio4-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  portalWebEndpoint: portal.icp-proxy.patrocinio4-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+selectedCluster:
+- ip: icp-console.patrocinio4-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  label: local-cluster
+  namespace: local-cluster
+  value: local-cluster
+
