@@ -1,7 +1,7 @@
 #NAME=$1
 PROJECT=apic
 SCC=ibm-anyuid-hostpath-scc
-ACCOUNT=my-apic-v2-ibm-apiconnect-icp4i-prod
+ACCOUNT=my-apic-v4-ibm-apiconnect-icp4i-prod
 
 #echo Deploying $NAME
 #helm install ibm-apiconnect-icp4i-prod-1.0.2 --name $NAME --values apic.yaml
