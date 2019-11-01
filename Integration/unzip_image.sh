@@ -9,6 +9,6 @@ function unzipImage {
 
 mkdir -p $WORK_DIR
 cd $WORK_DIR
-#unzipImage
+unzipImage
 
 echo Now you are ready to configure config.yaml

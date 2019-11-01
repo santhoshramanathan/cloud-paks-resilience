@@ -7,10 +7,13 @@ function updateHost {
 }
 
 function configureAccessToRegistry {
+  echo Setting port forward
   kubectl port-forward svc/docker-registry 5000 -n default &
+  sleep 2
 }
 
 function loginToDocker {
+  echo Logging to Docker
   docker login -u openshift -p $(oc whoami -t) docker-registry.default.svc:5000
 }
 
@@ -69,13 +72,13 @@ function installICP {
 
 CUR_DIR=`pwd`
 
-updateHost
+#reconfigureDockerStorage
 configureAccessToRegistry
 
 mkdir -p $WORK_DIR
 cd $WORK_DIR
+#loginToDocker
 #loadImages
-loginToDocker
 
 cd $INSTALLER_FILES_DIR
 defineKubeConfig

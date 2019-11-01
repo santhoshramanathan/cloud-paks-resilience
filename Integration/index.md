@@ -23,10 +23,20 @@ I created some simple scripts to deploy this CP:
 
 # Sizing
 
-## Version 3.2
+Version 3.2
+
+## Cloud Pak for Integration
 
 | Phase | CPU | Memory |
 |---|---|---|
 | Before CP for Integration | 2427m | 16121Mi |
 | After installing CP for Integration | 3491m | 22492Mi |
+| *Delta* | 1064m | 6371Mi |
+
+## API Connect
+
+| Phase | CPU | Memory |
+|---|---|---|
+| Before API Connect | 7151m | 36655Mi |
+| After installing API Connect |  |  |
 | *Delta* | 1064m | 6371Mi |
