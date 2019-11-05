@@ -37,6 +37,6 @@ Version 3.2
 
 | Phase | CPU | Memory |
 |---|---|---|
-| Before API Connect | 7151m | 36655Mi |
+| Before API Connect |  |  |
 | After installing API Connect |  |  |
-| *Delta* | 1064m | 6371Mi |
+| *Delta* |  |  |
