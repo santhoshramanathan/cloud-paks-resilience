@@ -1,13 +1,13 @@
-export IMAGE_DIR=/images/Data
+export IMAGE_DIR=/images/Data/2.1.0.2
 export WORK_DIR=/root/work_cp4d
 export TILLER_NAMESPACE=tiller
 
 # Deprecated
 function download {
-  chmod +x $IMAGE_DIR/ICP4D_ENT_Req_ICP_x86_V2.1.0.1.bin
+  chmod +x $IMAGE_DIR/ICP4D_ENT_INC_ICP_x86_V2.1.0.2.bin
 
   cd $WORK_DIR
-  $IMAGE_DIR/ICP4D_ENT_Req_ICP_x86_V2.1.0.1.bin --accept
+  $IMAGE_DIR/ICP4D_ENT_Req_ICP_x86_V2.1.0.2.bin --accept
 }
 
 # Deprecated
@@ -68,7 +68,7 @@ function grantClusterAdminRole {
   oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:$TILLER_NAMESPACE:tiller
 }
 
-grantClusterAdminRole
-applySCC
-#download
+#grantClusterAdminRole
+#applySCC
+download
 #createProject
