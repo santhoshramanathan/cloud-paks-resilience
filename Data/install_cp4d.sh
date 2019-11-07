@@ -8,7 +8,7 @@ function download {
   chmod +x $IMAGE_DIR/$IMAGE_NAME
 
   cd $WORK_DIR
-  $IMAGE_DIR/$IMAGE_NAME --accept
+  $IMAGE_DIR/$IMAGE_NAME --accept --nox11
 }
 
 # Deprecated
