@@ -66,7 +66,7 @@ function createCRB {
 }
 
 function grantClusterAdminRole {
-  oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:tiller-namespace:tiller
+  oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:$TILLER_NAMESPACE:tiller
 }
 
 grantClusterAdminRole
