@@ -1,13 +1,14 @@
 export IMAGE_DIR=/images/Data/2.1.0.2
 export WORK_DIR=/root/work_cp4d
 export TILLER_NAMESPACE=tiller
+export IMAGE_NAME=ICP4D_CNE_INC_ICP_x86_V2.1.0.2.bin
 
 # Deprecated
 function download {
-  chmod +x $IMAGE_DIR/ICP4D_ENT_INC_ICP_x86_V2.1.0.2.bin
+  chmod +x $IMAGE_DIR/$IMAGE_NAME
 
   cd $WORK_DIR
-  $IMAGE_DIR/ICP4D_ENT_Req_ICP_x86_V2.1.0.2.bin --accept
+  $IMAGE_DIR/$IMAGE_NAME --accept
 }
 
 # Deprecated
