@@ -1,6 +1,8 @@
 export IMAGE_DIR=/images/Data
 export WORK_DIR=/root/work_cp4d
+export TILLER_NAMESPACE=tiller
 
+# Deprecated
 function download {
   chmod +x $IMAGE_DIR/ICP4D_ENT_Req_ICP_x86_V2.1.0.1.bin
 
@@ -8,10 +10,12 @@ function download {
   $IMAGE_DIR/ICP4D_ENT_Req_ICP_x86_V2.1.0.1.bin --accept
 }
 
+# Deprecated
 function createProject {
   oc new-project zen
 }
 
+# Deprecated
 function applySCC {
   oc create -f - << EOF
   allowHostDirVolumePlugin: false
@@ -56,10 +60,16 @@ EOF
   oc adm policy add-scc-to-user anyuid system:serviceaccount:zen:icpd-anyuid-sa
 }
 
+# Deprecated
 function createCRB {
   kubectl create clusterrolebinding admin-on-zen --clusterrole=admin --user=system:serviceaccount:zen:default  -n zen
 }
 
+function grantClusterAdminRole {
+  oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:tiller-namespace:tiller
+}
+
+grantClusterAdminRole
 #download
 #createProject
 #applySCC

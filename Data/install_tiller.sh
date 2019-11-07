@@ -10,11 +10,12 @@ function installHelmClient {
   ./helm init --client-only
 }
 
-function installHelmServer {
-oc process -f https://github.com/openshift/origin/raw/master/examples/helm/tiller-template.yaml \
-  -p TILLER_NAMESPACE="${TILLER_NAMESPACE}" -p HELM_VERSION=v2.9.0 | oc create -f -
+function installTiller {
+  echo Installing tiller...
+  oc process -f https://github.com/openshift/origin/raw/master/examples/helm/tiller-template.yaml \
+    -p TILLER_NAMESPACE="${TILLER_NAMESPACE}" -p HELM_VERSION=v2.9.0 | oc create -f -
 }
 
 #createProject
 #installHelmClient
-installHelmServer
+installTiller
