@@ -15,7 +15,6 @@ function createProject {
   oc new-project zen
 }
 
-# Deprecated
 function applySCC {
   oc create -f - << EOF
   allowHostDirVolumePlugin: false
@@ -70,6 +69,6 @@ function grantClusterAdminRole {
 }
 
 grantClusterAdminRole
+applySCC
 #download
 #createProject
-#applySCC
