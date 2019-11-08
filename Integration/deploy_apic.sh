@@ -1,4 +1,4 @@
-NAME=my-apic-v7
+NAME=$1
 PROJECT=apic
 SCC=ibm-anyuid-hostpath-scc
 ACCOUNT=my-apic-v4-ibm-apiconnect-icp4i-prod
