@@ -1,5 +1,5 @@
 NAME=$1
-PROJECT=apic
+PROJECT=apic2
 SCC=ibm-anyuid-hostpath-scc
 ACCOUNT=my-apic-v4-ibm-apiconnect-icp4i-prod
 WORK_DIR=/root/work_cp4i
