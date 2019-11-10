@@ -5,10 +5,9 @@ ACCOUNT=my-apic-v4-ibm-apiconnect-icp4i-prod
 WORK_DIR=/root/work_cp4i
 
 function deployHelm {
-  cd $WORK_DIR
   echo Deploying $NAME
-  helm install ibm-apiconnect-icp4i-prod --name $NAME \
-    --tls --debug
+  helm install https://github.com/IBM/charts/blob/master/repo/entitled/ibm-apiconnect-icp4i-prod-1.0.3.tgz \
+    --name $NAME --tls --debug -f values.yaml --dry-run
 }
 
 function associateSCC {
