@@ -6,7 +6,7 @@ WORK_DIR=/root/work_cp4i
 
 function deployHelm {
   echo Deploying $NAME
-  helm install https://github.com/IBM/charts/raw/master/repo/entitled/ibm-apiconnect-icp4i-prod-1.0.3.tgz
+  helm install https://github.com/IBM/charts/raw/master/repo/entitled/ibm-apiconnect-icp4i-prod-1.0.3.tgz \
     --name $NAME --tls --debug -f values.yaml --dry-run
 }
 
