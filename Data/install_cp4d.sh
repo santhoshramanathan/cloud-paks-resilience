@@ -3,6 +3,7 @@ export WORK_DIR=/root/work_cp4d
 export TILLER_NAMESPACE=tiller
 export IMAGE_NAME=ICP4D_CNE_INC_ICP_x86_V2.1.0.2.bin
 
+# Deprecated
 function download {
   chmod +x $IMAGE_DIR/$IMAGE_NAME
 
@@ -84,11 +85,16 @@ function configureAccessToRegistry {
   sleep 2
 }
 
+function createSecret {
+  kubectl create secret -n kube-system docker-registry icp4d-anyuid-docker-pull \
+    --docker-server=docker-registry.default.svc:5000 \
+    --docker-username=openshift \
+    --docker-password=$(oc whoami -t)
+}
+
 
 #applySCC
-updateHost
-configureAccessToRegistry
-loginToDocker
-#grantClusterAdminRole
-#download
-#createProject
+#updateHost
+#configureAccessToRegistry
+#loginToDocker
+createSecret
