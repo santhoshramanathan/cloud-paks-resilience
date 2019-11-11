@@ -95,3 +95,81 @@ objects:
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
+  metadata:
+    name: cp4data-installer
+    annotations:
+      template.alpha.openshift.io/wait-for-ready: "true"
+  spec:
+    replicas: 1
+    selector:
+      name: cp4data-installer
+    strategy:
+      type: Recreate
+    template:
+      metadata:
+        labels:
+          name: cp4data-installer
+      spec:
+        containers:
+        - env:
+          - name: NAMESPACE
+            value: \${NAMESPACE}
+          - name: TILLER_NAMESPACE
+            value: \${NAMESPACE}
+          - name: INSTALL_TILLER
+            value: "1"
+          - name: TILLER_IMAGE
+            value: "${DOCKER_REGISTRY}/cp4d-tiller:v1"
+          - name: TILLER_TLS
+            value: "0"
+          - name: STORAGE_CLASS
+            value: \${STORAGE_CLASS}
+          - name: DOCKER_REGISTRY
+            value: ${DOCKER_REGISTRY}
+          - name: DOCKER_REGISTRY_USER
+            value: ${DOCKER_REGISTRY_USER}
+          - name: DOCKER_REGISTRY_PASS
+            value: \${DOCKER_REGISTRY_PASS}
+          - name: NGINX_PORT_NUMBER
+            value: \${NGINX_PORT_NUMBER}
+          - name: CONSOLE_ROUTE_PREFIX
+            value: \${CONSOLE_ROUTE_PREFIX}
+          name: cp4data-installer
+          image: "${DOCKER_REGISTRY}/cp4d-installer:v1"
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "200Mi"
+              cpu: 1
+          command: [ "/bin/sh", "-c" ]
+          args: [ "./deploy-cp4data.sh; sleep 3000000" ]
+        imagePullSecrets:
+        - name: icp4d-anyuid-docker-pull
+parameters:
+- description: Namespace where to install Cloud Pak for Data.
+  displayName: Namespace
+  name: NAMESPACE
+  required: true
+  value: ${NAMESPACE}
+- description: Docker registry user with permission with pull images.
+  displayName: Docker Registry User
+  name: DOCKER_REGISTRY_USER
+  value: ${DOCKER_REGISTRY_USER}
+  required: true
+- description: Docker registry password.
+  displayName: Docker Registry Password
+  name: DOCKER_REGISTRY_PASS
+  required: true
+  value: ${DOCKER_REGISTRY_PASS}
+- description: Hostname for the external route.
+  displayName: Cloud Pak route hostname
+  name: CONSOLE_ROUTE_PREFIX
+  required: true
+  value: "cp4data-console"
+- description: Storage class name.
+  displayName: StorageClass
+  name: STORAGE_CLASS
+  value: "ibmc-file-retain-custom"
+  required: true
+
+EOF
