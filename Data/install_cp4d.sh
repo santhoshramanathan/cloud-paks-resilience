@@ -56,7 +56,6 @@ function applySCC {
   - secret
 EOF
   oc adm policy add-scc-to-user zenuid system:serviceaccount:zen:default
-  oc adm policy add-scc-to-user anyuid system:serviceaccount:zen:icpd-anyuid-sa
 }
 
 # Deprecated
@@ -64,11 +63,32 @@ function createCRB {
   kubectl create clusterrolebinding admin-on-zen --clusterrole=admin --user=system:serviceaccount:zen:default  -n zen
 }
 
+# Deprecated
 function grantClusterAdminRole {
   oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:$TILLER_NAMESPACE:tiller
 }
 
-#grantClusterAdminRole
+function loginToDocker {
+  echo Logging to Docker
+  docker login -u openshift -p $(oc whoami -t) docker-registry.default.svc:5000
+}
+
+function updateHost {
+  echo Updating host
+  echo 127.0.0.1 docker-registry.default.svc localhost > /etc/hosts
+}
+
+function configureAccessToRegistry {
+  echo Setting port forward
+  kubectl port-forward svc/docker-registry 5000 -n default &
+  sleep 2
+}
+
+
 #applySCC
-download
+updateHost
+configureAccessToRegistry
+loginToDocker
+#grantClusterAdminRole
+#download
 #createProject
