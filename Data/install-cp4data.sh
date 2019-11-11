@@ -1,8 +1,9 @@
 NAMESPACE=zen
 
 DOCKER_REGISTRY="us.icr.io/release2_1_0_1_base"
-DOCKER_REGISTRY_USER="patrocinio-key"
+DOCKER_REGISTRY_USER="iamapikey"
 DOCKER_REGISTRY_PASS="tYwud0qMc5QZOkY7gznGe7oPKbpRhttQpTF64N3I0RGs"
+SECRET_NAME="icp4d-anyuid-docker-pull"
 
 oc create ns ${NAMESPACE}
 oc project ${NAMESPACE}
@@ -14,7 +15,8 @@ oc create sa -n ${NAMESPACE} icpd-anyuid-sa
 oc -n ${NAMESPACE} adm policy add-role-to-user -z deployer system:deployer
 
 # Create the secrets to pull images from the docker repository
-oc create secret docker-registry icp4d-anyuid-docker-pull -n ${NAMESPACE} --docker-server=${DOCKER_REGISTRY} --docker-username=${DOCKER_REGISTRY_USER} --docker-password=${DOCKER_REGISTRY_PASS} --docker-email=cp4data@ibm.com
+oc delete secret ${SECRET_NAME}
+oc create secret docker-registry ${SECRET_NAME}  -n ${NAMESPACE} --docker-server=${DOCKER_REGISTRY} --docker-username=${DOCKER_REGISTRY_USER} --docker-password=${DOCKER_REGISTRY_PASS} --docker-email=cp4data@ibm.com
 oc secrets -n ${NAMESPACE} link default icp4d-anyuid-docker-pull --for=pull
 oc secrets -n ${NAMESPACE} link tiller icp4d-anyuid-docker-pull --for=pull
 oc secrets -n ${NAMESPACE} link icpd-anyuid-sa icp4d-anyuid-docker-pull --for=pull
