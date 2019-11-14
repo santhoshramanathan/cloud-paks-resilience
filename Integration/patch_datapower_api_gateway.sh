@@ -9,7 +9,7 @@ function loginToDocker {
 }
 
 function pullImage {
-  docker-registry.default.svc:5000/apic/datapower-api-gateway:2018.4.1.7-312001-release-prod
+  docker pull docker-registry.default.svc:5000/apic/datapower-api-gateway:2018.4.1.7-312001-release-prod
 }
 
 #configureAccessToRegistry
