@@ -2,7 +2,7 @@ NAMESPACE=zen
 
 DOCKER_REGISTRY="us.icr.io/release2_1_0_1_base"
 DOCKER_REGISTRY_USER="iamapikey"
-DOCKER_REGISTRY_PASS="tYwud0qMc5QZOkY7gznGe7oPKbpRhttQpTF64N3I0RGs"
+DOCKER_REGISTRY_PASS="XXX"
 SECRET_NAME="icp4d-anyuid-docker-pull"
 
 oc create ns ${NAMESPACE}
