@@ -1,4 +1,4 @@
-CURRENT_IMAGE=apic/datapower-api-gateway:2018.4.1.7-312001-release-prod
+CURRENT_IMAGE=docker-registry.default.svc:5000/apic/datapower-api-gateway:2018.4.1.7-312001-release-prod
 
 function configureAccessToRegistry {
   echo Setting port forward
@@ -11,7 +11,7 @@ function loginToDocker {
 }
 
 function pullImage {
-  docker pull docker-registry.default.svc:5000/$CURRENT_IMAGE
+  docker pull $CURRENT_IMAGE
 }
 
 function tagImage {
