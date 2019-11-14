@@ -14,6 +14,10 @@ function pullImage {
   docker pull docker-registry.default.svc:5000/$CURRENT_IMAGE
 }
 
+function tagImage {
+  docker tag $CURRENT_IMAGE apic/datapower-api-gateway:2018.4.1.7-od-tracing-rel4-313058-od-tracing-rel4-release-prod
+}
+
 #configureAccessToRegistry
 #loginToDocker
 pullImage
