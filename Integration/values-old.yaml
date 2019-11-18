@@ -7,9 +7,9 @@ global:
   registry: "cp.icr.io/cp/icp4i/apic"
   registrySecret: ""
   createCrds: true
-  storageClass: ""
-  mode: "standard"
-  routingType: ""
+  storageClass: ibmc-block-gold
+  mode: "dev"
+  routingType: route
   certSecret: ""
   extraValuesConfig: ""
 
@@ -18,9 +18,9 @@ operator:
   arch: amd64
   registry: ""
   image: "apiconnect-operator"
-  tag: 2019-10-14-16-52-30-f1e6afb3e39ac2ea95666f2b85e7557f60ba6f0b
+  tag: 2019-09-17-15-15-59-ea366f01215e13fcd1acd1b81e5006cb32483c3d
   pullPolicy: IfNotPresent
-  helmTlsSecret: ""
+  helmTlsSecret: apic-ent-helm-tls
   serviceAccount:
     create: true
     name:
@@ -38,7 +38,7 @@ management:
   cloudAdminUiEndpoint: mgmt.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
   apiManagerUiEndpoint: mgmt.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
 cassandra:
-  cassandraClusterSize: 3
+  cassandraClusterSize: 1
   cassandraMaxMemoryGb: 9
   cassandraVolumeSizeGb: 50
 cassandraBackup:
@@ -100,15 +100,15 @@ gateway:
   enabled: true
   certSecret: ""
   storageClass: ""
-  apiGatewayEndpoint: api-gateway.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
-  gatewayServiceEndpoint: gwd.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  apiGatewayEndpoint: "api-gateway.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud"
+  gatewayServiceEndpoint: "gwd.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud"
   replicaCount: 3
   maxCpu: 4
   maxMemoryGb: 6
   v5CompatibilityMode: true
   enableTms: false
   tmsPeeringStorageSizeGb: 10
-  highPerformancePeering:
+  highPerformancePeering: off
   image: "datapower-api-gateway"
   imageTag: 2018.4.1.7-od-tracing-rel4-313058-od-tracing-rel4-release-prod
   monitoringImage: "k8s-datapower-monitor"
