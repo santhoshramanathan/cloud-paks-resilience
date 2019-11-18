@@ -7,7 +7,7 @@ global:
   registry: "cp.icr.io/cp/icp4i/apic"
   registrySecret: ""
   createCrds: true
-  storageClass: ""
+  storageClass: ibmc-block-gold
   mode: "standard"
   routingType: ""
   certSecret: ""
@@ -20,7 +20,7 @@ operator:
   image: "apiconnect-operator"
   tag: 2019-10-14-16-52-30-f1e6afb3e39ac2ea95666f2b85e7557f60ba6f0b
   pullPolicy: IfNotPresent
-  helmTlsSecret: ""
+  helmTlsSecret: helm-tls-secret
   serviceAccount:
     create: true
     name:
@@ -108,7 +108,7 @@ gateway:
   v5CompatibilityMode: true
   enableTms: false
   tmsPeeringStorageSizeGb: 10
-  highPerformancePeering:
+  highPerformancePeering: off
   image: "datapower-api-gateway"
   imageTag: 2018.4.1.7-od-tracing-rel4-313058-od-tracing-rel4-release-prod
   monitoringImage: "k8s-datapower-monitor"

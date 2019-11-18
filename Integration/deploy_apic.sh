@@ -20,6 +20,7 @@ function associateSCC {
   oc adm policy add-scc-to-user $SCC system:serviceaccount:$PROJECT:$ACCOUNT
 }
 
+oc project $PROJECT
 echo Deploying API Connect $NAME
 #associateSCC
 #createRoleBinding

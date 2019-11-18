@@ -22,6 +22,7 @@ EOF
 }
 
 function installVelero {
+  echo Installing velero
   velero install \
       --provider aws \
       --bucket velero \
@@ -37,4 +38,4 @@ cd velero
 oc project velero
 #exposeMinIO
 #createVeleroCredentials
-installVelero
+#installVelero
