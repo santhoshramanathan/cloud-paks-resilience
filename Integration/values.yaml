@@ -4,8 +4,8 @@ cloudIntegrationPlatformNamespace: "integration"
 productionDeployment: true
 
 global:
-  registry: "docker-registry.default.svc:5000/apic"
-  registrySecret: "deployer-dockercfg-prc4l"
+  registry: "cp.icr.io/cp/icp4i/apic"
+  registrySecret: ""
   createCrds: true
   storageClass: ibmc-block-gold
   mode: "dev"

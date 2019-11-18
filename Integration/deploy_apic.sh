@@ -7,7 +7,13 @@ WORK_DIR=/root/work_cp4i
 function deployHelm {
   echo Deploying $NAME
   helm install https://github.com/IBM/charts/raw/master/repo/entitled/ibm-apiconnect-icp4i-prod-1.0.3.tgz \
-    --name $NAME --tls --debug -f values.yaml
+    --name $NAME --tls -f values.yaml
+}
+
+function createRoleBinding {
+  oc -n $PROJECT create rolebinding apic-security-policy \
+  --clusterrole=ibm-anyuid-hostpath-scc \
+  --group=system:serviceaccounts:$PROJECT
 }
 
 function associateSCC {
@@ -15,5 +21,6 @@ function associateSCC {
 }
 
 echo Deploying API Connect $NAME
-associateSCC
+#associateSCC
+#createRoleBinding
 deployHelm
