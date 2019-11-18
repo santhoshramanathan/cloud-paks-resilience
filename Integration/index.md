@@ -4,6 +4,8 @@
 
 [Deployment Guide](https://cloudpak8s.io/integration/introduction/)
 
+[One-click Install](https://cloud.ibm.com/catalog/content/ibm-cp-integration)
+
 # Areas
 
 * API Connect, implementing managed APIs
@@ -12,31 +14,3 @@
 * Event Streams, for event handling based on Kafka
 * DataPower Gateway, for gateway services.
 * Aspera High Speed Transfer Server, for large file transfers
-
-# How to deploy CP for integration
-
-I created some simple scripts to deploy this CP:
-
-* [Unzip CP Image](unzip_image.sh)
-* [Install Docker](install_docker.sh)
-* [Install CP 4 Integration](install_cp4i.sh)
-
-# Sizing
-
-Version 3.2
-
-## Cloud Pak for Integration
-
-| Phase | CPU | Memory |
-|---|---|---|
-| Before CP for Integration | 2427m | 16121Mi |
-| After installing CP for Integration | 3491m | 22492Mi |
-| *Delta* | 1064m | 6371Mi |
-
-## API Connect
-
-| Phase | CPU | Memory |
-|---|---|---|
-| Before API Connect |  |  |
-| After installing API Connect |  |  |
-| *Delta* |  |  |
