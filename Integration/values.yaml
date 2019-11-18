@@ -33,10 +33,10 @@ management:
   enabled: true
   certSecret: ""
   storageClass: ""
-  platformApiEndpoint: mgmt.icp-proxy.patrocinio6-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
-  consumerApiEndpoint: mgmt.icp-proxy.patrocinio6-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
-  cloudAdminUiEndpoint: mgmt.icp-proxy.patrocinio6-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
-  apiManagerUiEndpoint: mgmt.icp-proxy.patrocinio6-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  platformApiEndpoint: mgmt.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  consumerApiEndpoint: mgmt.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  cloudAdminUiEndpoint: mgmt.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  apiManagerUiEndpoint: mgmt.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
 cassandra:
   cassandraClusterSize: 1
   cassandraMaxMemoryGb: 9
@@ -62,8 +62,8 @@ portal:
   enabled: true
   certSecret: ""
   storageClass: ""
-  portalDirectorEndpoint: padmin.icp-proxy.patrocinio6-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
-  portalWebEndpoint: portal-web.icp-proxy.patrocinio6-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  portalDirectorEndpoint: padmin.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  portalWebEndpoint: portal-web.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
   adminStorageSizeGb: 1
   backupStorageSizeGb: 5
   dbLogsStorageSizeGb: 2
@@ -87,8 +87,8 @@ analytics:
   esStorageClass: ""
   enableMessageQueue: false
   mqStorageClass: ""
-  analyticsIngestionEndpoint: ai.mgmt.icp-proxy.patrocinio6-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
-  analyticsClientEndpoint: ac.icp-proxy.patrocinio6-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  analyticsIngestionEndpoint: ai.mgmt.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
+  analyticsClientEndpoint: ac.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
   coordinatingMaxMemoryGb: 12
   dataMaxMemoryGb: 12
   dataStorageSizeGb: 200
@@ -100,8 +100,8 @@ gateway:
   enabled: true
   certSecret: ""
   storageClass: ""
-  apiGatewayEndpoint: "api-gateway.icp-proxy.patrocinio6-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud"
-  gatewayServiceEndpoint: "gwd.icp-proxy.patrocinio6-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud"
+  apiGatewayEndpoint: "api-gateway.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud"
+  gatewayServiceEndpoint: "gwd.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud"
   replicaCount: 3
   maxCpu: 4
   maxMemoryGb: 6
