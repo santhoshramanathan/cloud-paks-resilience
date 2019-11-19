@@ -22,6 +22,7 @@ function associateSCC {
 
 function createTlsSecret {
   echo Creating TLS Secret...
+  oc delete secret helm-tls-secret
   oc create secret generic helm-tls-secret \
     --from-file=cert.pem=$HOME/.helm/cert.pem \
     --from-file=ca.pem=$HOME/.helm/ca.pem \

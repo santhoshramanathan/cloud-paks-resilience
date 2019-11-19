@@ -8,7 +8,7 @@ global:
   registrySecret: ""
   createCrds: true
   storageClass: ibmc-block-gold
-  mode: "standard"
+  mode: "dev"
   routingType: ""
   certSecret: ""
   extraValuesConfig: ""
@@ -38,7 +38,7 @@ management:
   cloudAdminUiEndpoint: mgmt.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
   apiManagerUiEndpoint: mgmt.icp-proxy.patrocinio8-fa9ee67c9ab6a7791435450358e564cc-0001.us-east.containers.appdomain.cloud
 cassandra:
-  cassandraClusterSize: 3
+  cassandraClusterSize: 1
   cassandraMaxMemoryGb: 9
   cassandraVolumeSizeGb: 50
 cassandraBackup:
