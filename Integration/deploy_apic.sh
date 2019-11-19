@@ -20,8 +20,17 @@ function associateSCC {
   oc adm policy add-scc-to-user $SCC system:serviceaccount:$PROJECT:$ACCOUNT
 }
 
+function createTlsSecret {
+  echo Creating TLS Secret...
+  oc create secret generic helm-tls-secret \
+    --from-file=cert.pem=$HOME/.helm/cert.pem \
+    --from-file=ca.pem=$HOME/.helm/ca.pem \
+    --from-file=key.pem=$HOME/.helm/key.pem
+}
+
 oc project $PROJECT
 echo Deploying API Connect $NAME
 #associateSCC
 #createRoleBinding
+createTlsSecret
 deployHelm
