@@ -4,20 +4,15 @@ SCC=ibm-anyuid-hostpath-scc
 ACCOUNT=my-apic-v4-ibm-apiconnect-icp4i-prod
 WORK_DIR=/root/work_cp4i
 
-function deployHelm {
-  echo Deploying $NAME
-  helm install https://github.com/IBM/charts/raw/master/repo/entitled/ibm-apiconnect-icp4i-prod-1.0.3.tgz \
-    --name $NAME --tls -f values.yaml
+# Deprecated ?
+function associateSCC {
+  oc adm policy add-scc-to-user $SCC system:serviceaccount:$PROJECT:$ACCOUNT
 }
 
 function createRoleBinding {
   oc -n $PROJECT create rolebinding apic-security-policy \
   --clusterrole=ibm-anyuid-hostpath-scc \
   --group=system:serviceaccounts:$PROJECT
-}
-
-function associateSCC {
-  oc adm policy add-scc-to-user $SCC system:serviceaccount:$PROJECT:$ACCOUNT
 }
 
 function createTlsSecret {
@@ -29,9 +24,27 @@ function createTlsSecret {
     --from-file=key.pem=$HOME/.helm/key.pem
 }
 
+function obtainRoute {
+  oc get route icp-proxy -n kube-system \
+    -o jsonpath='{@.status.ingress[0].host}'
+}
+
+function buildValues {
+  sed s/\$ROUTE/$ROUTE/g < values.yaml.template > /tmp/values.yaml
+}
+
+function deployHelm {
+  echo Deploying $NAME
+  helm install https://github.com/IBM/charts/raw/master/repo/entitled/ibm-apiconnect-icp4i-prod-1.0.3.tgz \
+    --name $NAME --tls -f /tmp/values.yaml
+}
+
 oc project $PROJECT
 echo Deploying API Connect $NAME
 #associateSCC
-#createRoleBinding
+createRoleBinding
 createTlsSecret
-deployHelm
+ROUTE=$(obtainRoute)
+echo Route: $ROUTE
+buildValues
+#deployHelm
