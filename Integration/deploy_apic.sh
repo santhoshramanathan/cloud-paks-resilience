@@ -47,4 +47,4 @@ createTlsSecret
 ROUTE=$(obtainRoute)
 echo Route: $ROUTE
 buildValues
-#deployHelm
+deployHelm
