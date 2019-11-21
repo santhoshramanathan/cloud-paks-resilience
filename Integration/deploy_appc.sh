@@ -51,7 +51,7 @@ function obtainDockerSecret {
 function deployHelm {
   echo Deploying $NAME
   helm install https://github.com/IBM/charts/blob/master/repo/entitled/ibm-ace-dashboard-icp4i-prod-2.2.0.tgz?raw=true \
-    --name $NAME --tls --set image.pullSecret=$DOCKER_SECRET
+    --name $NAME --tls --set image.pullSecret=$IMAGE_SECRET
     #-f /tmp/values.yaml
 }
 
@@ -61,6 +61,9 @@ oc project $PROJECT
 echo Deploying App Connect $NAME
 #associateSCC
 #createRoleBinding
+
+ENTITLEMENT_KEY=$(pak-entitlement.sh show-key Integration)
+echo Key: $ENTITLEMENT_KEY
 
 createImagePullSecret
 
