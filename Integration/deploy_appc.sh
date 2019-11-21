@@ -1,7 +1,7 @@
 NAME=$1
 PROJECT=ace
 SCC=ibm-anyuid-hostpath-scc
-IMAGE_SECRET=sa-ace
+IMAGE_SECRET=prod-secret
 
 function associateSCC {
   oc adm policy add-scc-to-group $SCC system:serviceaccounts:$PROJECT
@@ -39,7 +39,7 @@ function buildValues {
 function createImagePullSecret {
   oc delete secret $IMAGE_SECRET
   oc create secret docker-registry $IMAGE_SECRET \
-    --docker-server=cp.icr.io --docker-username=cp \
+    --docker-server=cp.icr.io --docker-username=ekey \
     --docker-password=$ENTITLEMENT_KEY
 }
 
