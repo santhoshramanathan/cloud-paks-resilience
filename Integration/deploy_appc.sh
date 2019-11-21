@@ -1,7 +1,7 @@
 NAME=$1
 PROJECT=ace
 SCC=ibm-anyuid-hostpath-scc
-IMAGE_SECRET=docker-registry
+IMAGE_SECRET=prod-secret
 
 function associateSCC {
   oc adm policy add-scc-to-group $SCC system:serviceaccounts:$PROJECT
@@ -35,18 +35,18 @@ function buildValues {
   sed s/\$ROUTE/$ROUTE/g < values.yaml.template > /tmp/values.yaml
 }
 
-function deployHelm {
-  echo Deploying $NAME
-  helm install https://github.com/IBM/charts/blob/master/repo/entitled/ibm-ace-dashboard-icp4i-prod-2.2.0.tgz?raw=true \
-    --name $NAME --tls
-    #-f /tmp/values.yaml
-}
-
 function createImagePullSecret {
   oc delete secret $IMAGE_SECRET
   oc create secret docker-registry $IMAGE_SECRET \
     --docker-server=cp.icr.io --docker-username=cp \
     --docker-password=$ENTITLEMENT_KEY
+}
+
+function deployHelm {
+  echo Deploying $NAME
+  helm install https://github.com/IBM/charts/blob/master/repo/entitled/ibm-ace-dashboard-icp4i-prod-2.2.0.tgz?raw=true \
+    --name $NAME --tls --set image.pullSecret=$IMAGE_SECRET
+    #-f /tmp/values.yaml
 }
 
 
@@ -55,11 +55,6 @@ oc project $PROJECT
 echo Deploying App Connect $NAME
 #associateSCC
 #createRoleBinding
-#createTlsSecret
-
-#ROUTE=$(obtainRoute)
-#echo Route: $ROUTE
 
 createImagePullSecret
-#buildValues
-#deployHelm
+deployHelm
