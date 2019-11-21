@@ -47,11 +47,17 @@ function obtainDockerSecret {
   oc get secret -o custom-columns=NAME:{.metadata.name} | grep deployer-dockercfg
 }
 
+function obtainRoute {
+  oc get route icp-proxy -n kube-system \
+    -o jsonpath='{@.status.ingress[0].host}'
+}
 
 function deployHelm {
   echo Deploying $NAME
   helm install https://github.com/IBM/charts/blob/master/repo/entitled/ibm-ace-dashboard-icp4i-prod-2.2.0.tgz?raw=true \
-    --name $NAME --tls --set image.pullSecret=$IMAGE_SECRET
+    --name $NAME --tls --set image.pullSecret=$IMAGE_SECRET \
+    --set persistence.storageClassName=ibmc-file-bronze --set ssoEnabled=false \
+    --set tls.hostname=$ROUTE
     #-f /tmp/values.yaml
 }
 
@@ -67,7 +73,7 @@ echo Key: $ENTITLEMENT_KEY
 
 createImagePullSecret
 
-#DOCKER_SECRET=$(obtainDockerSecret)
-#echo Docker secret: $DOCKER_SECRET
+ROUTE=$(obtainRoute)
+echo Route: $ROUTE
 
 deployHelm
