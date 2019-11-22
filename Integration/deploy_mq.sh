@@ -17,7 +17,8 @@ function createImagePullSecret {
 function deployHelm {
   echo Deploying $NAME
   helm install https://github.com/IBM/charts/blob/master/repo/entitled/ibm-mqadvanced-server-integration-prod-4.1.0.tgz?raw=true \
-    --name $NAME --tls --set image.pullSecret=$IMAGE_SECRET
+    --name $NAME --tls --set image.pullSecret=$IMAGE_SECRET \
+    --set license="accept"
 #    --set persistence.storageClassName=ibmc-file-bronze --set ssoEnabled=false
 }
 
