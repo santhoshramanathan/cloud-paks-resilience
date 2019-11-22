@@ -8,8 +8,9 @@ function associateSCC {
 }
 
 
+# Redundant?
 function createRoleBinding {
-  oc -n $PROJECT create rolebinding apic-security-policy \
+  oc create rolebinding appc-security-policy \
   --clusterrole=ibm-anyuid-hostpath-scc \
   --group=system:serviceaccounts:$PROJECT
 }
@@ -58,14 +59,13 @@ function deployHelm {
     --name $NAME --tls --set image.pullSecret=$IMAGE_SECRET \
     --set persistence.storageClassName=ibmc-file-bronze --set ssoEnabled=false \
     --set tls.hostname=$ROUTE
-    #-f /tmp/values.yaml
 }
 
 
 
 oc project $PROJECT
 echo Deploying App Connect $NAME
-#associateSCC
+associateSCC
 #createRoleBinding
 
 ENTITLEMENT_KEY=$(pak-entitlement.sh show-key Integration)

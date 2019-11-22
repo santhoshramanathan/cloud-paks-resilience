@@ -44,7 +44,9 @@ echo Deploying API Connect $NAME
 #associateSCC
 createRoleBinding
 createTlsSecret
+
 ROUTE=$(obtainRoute)
 echo Route: $ROUTE
+
 buildValues
 deployHelm
