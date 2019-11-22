@@ -2,6 +2,7 @@ NAME=$1
 PROJECT=mq
 SCC=ibm-anyuid-hostpath-scc
 IMAGE_SECRET=prod-secret
+TLS_SECRET=ibm-mq-tls-secret
 
 function associateSCC {
   oc adm policy add-scc-to-group $SCC system:serviceaccounts:$PROJECT
@@ -13,6 +14,17 @@ function createImagePullSecret {
     --docker-server=cp.icr.io --docker-username=ekey \
     --docker-password=$ENTITLEMENT_KEY
 }
+
+function createTlsSecret {
+  echo Creating TLS Secret...
+  oc delete secret $TLS_SECRET
+  oc create secret generic $TLS_SECRET \
+    --from-file=tls.crt=$HOME/.helm/cert.pem \
+    --from-file=ca.crt=$HOME/.helm/ca.pem \
+    --from-file=tls.key=$HOME/.helm/key.pem
+}
+
+
 
 function deployHelm {
   echo Deploying $NAME
@@ -27,6 +39,8 @@ function deployHelm {
 oc project $PROJECT
 echo Deploying MQ $NAME
 associateSCC
+
+createTlsSecret
 
 ENTITLEMENT_KEY=$(pak-entitlement.sh show-key Integration)
 echo Key: $ENTITLEMENT_KEY
