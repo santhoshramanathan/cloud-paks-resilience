@@ -15,28 +15,11 @@ function createRoleBinding {
   --group=system:serviceaccounts:$PROJECT
 }
 
-# Not needed
-function createTlsSecret {
-  echo Creating TLS Secret...
-  oc delete secret helm-tls-secret
-  oc create secret generic helm-tls-secret \
-    --from-file=cert.pem=$HOME/.helm/cert.pem \
-    --from-file=ca.pem=$HOME/.helm/ca.pem \
-    --from-file=key.pem=$HOME/.helm/key.pem
-}
-
-# Not needed
 function obtainRoute {
   oc get route icp-proxy -n kube-system \
     -o jsonpath='{@.status.ingress[0].host}'
 }
 
-# Not needed
-function buildValues {
-  sed s/\$ROUTE/$ROUTE/g < values.yaml.template > /tmp/values.yaml
-}
-
-# Deprecated
 function createImagePullSecret {
   oc delete secret $IMAGE_SECRET
   oc create secret docker-registry $IMAGE_SECRET \
@@ -46,11 +29,6 @@ function createImagePullSecret {
 
 function obtainDockerSecret {
   oc get secret -o custom-columns=NAME:{.metadata.name} | grep deployer-dockercfg
-}
-
-function obtainRoute {
-  oc get route icp-proxy -n kube-system \
-    -o jsonpath='{@.status.ingress[0].host}'
 }
 
 function deployHelm {
