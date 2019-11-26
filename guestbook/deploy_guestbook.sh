@@ -1,29 +1,39 @@
+BASE_URL=https://raw.githubusercontent.com/patrocinio/guestbook/master/
+
 function createProject {
   oc new-project guestbook
 }
 
 function deployRedisMaster {
-  oc apply -f https://k8s.io/examples/application/guestbook/redis-master-deployment.yaml
+  oc apply -f $BASE_URL/redis-master-deployment.yaml
 }
 
 function deployRedisMasterService {
-  oc apply -f https://k8s.io/examples/application/guestbook/redis-master-service.yaml
+  oc apply -f $BASE_URL/redis-master-service.yaml
 }
 
 function deployRedisSlave {
-  oc apply -f https://k8s.io/examples/application/guestbook/redis-slave-deployment.yaml
+  oc apply -f $BASE_URL/redis-slave-deployment.yaml
 }
 
 function deployRedisSlaveService {
-  oc apply -f https://k8s.io/examples/application/guestbook/redis-slave-service.yaml
+  oc apply -f $BASE_URL/redis-slave-service.yaml
 }
 
-function deployGuestbok {
-  oc apply -f https://k8s.io/examples/application/guestbook/frontend-deployment.yaml
+function deployFrontend {
+  oc apply -f $BASE_URL/frontend-deployment.yaml
 }
 
-function deployGuestbookService {
-  oc apply -f https://k8s.io/examples/application/guestbook/frontend-service.yaml
+function deployFrontendService {
+  oc apply -f $BASE_URL/frontend-service.yaml
+}
+
+function deployBackend {
+  oc apply -f $BASE_URL/backend-deployment.yaml
+}
+
+function deployBackendService {
+  oc apply -f $BASE_URL/backend-service.yaml
 }
 
 function exposeGuestbook {
@@ -43,8 +53,10 @@ oc project guestbook
 #deployRedisMasterService
 #deployRedisSlave
 #deployRedisSlaveService
-#deployGuestbok
-#deployGuestbookService
-exposeGuestbook
+deployBackend
+deployBackendService
+#deployFrontend
+#deployFrontendService
+#exposeGuestbook
 ROUTE=$(obtainRoute)
 echo Route: $ROUTE
