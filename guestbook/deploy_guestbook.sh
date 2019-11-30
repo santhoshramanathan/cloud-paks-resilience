@@ -1,4 +1,4 @@
-BASE_URL=https://raw.githubusercontent.com/patrocinio/guestbook/master/
+BASE_URL=https://raw.githubusercontent.com/patrocinio/guestbook/backend
 
 function createProject {
   oc new-project guestbook
@@ -24,6 +24,7 @@ function deployFrontend {
   oc apply -f $BASE_URL/frontend-deployment.yaml
 }
 
+# Deprecated
 function deployFrontendService {
   oc apply -f $BASE_URL/frontend-service.yaml
 }
@@ -32,6 +33,7 @@ function deployBackend {
   oc apply -f $BASE_URL/backend-deployment.yaml
 }
 
+# Deprecated
 function deployBackendService {
   oc apply -f $BASE_URL/backend-service.yaml
 }
@@ -40,10 +42,18 @@ function exposeGuestbook {
   oc expose svc frontend
 }
 
-function obtainRoute {
-  oc get route frontend -o jsonpath='{@.status.ingress[0].host}'
+function exposeBackend {
+  oc expose svc backend
 }
 
+function exposeRedisMaster {
+  oc delete route redis-master
+  oc expose svc redis-master --port 6379
+}
+
+function obtainRoute {
+  oc get route $1 -o jsonpath='{@.status.ingress[0].host}'
+}
 
 
 #createProject
@@ -53,10 +63,16 @@ oc project guestbook
 #deployRedisMasterService
 #deployRedisSlave
 #deployRedisSlaveService
-deployBackend
-deployBackendService
+#deployBackend
+#deployBackendService
 #deployFrontend
 #deployFrontendService
 #exposeGuestbook
-ROUTE=$(obtainRoute)
-echo Route: $ROUTE
+exposeBackend
+#exposeRedisMaster
+
+#ROUTE=$(obtainRoute frontend)
+#echo Frontend route: $ROUTE
+
+#ROUTE=$(obtainRoute redis-master)
+#echo Redis master route: $ROUTE
