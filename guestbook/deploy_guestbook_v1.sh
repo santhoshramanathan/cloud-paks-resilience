@@ -61,15 +61,20 @@ function obtainRoute {
 oc project guestbook
 #deployRedisMaster
 #deployRedisMasterService
+#exposeRedisMaster
+
 #deployRedisSlave
 #deployRedisSlaveService
+
 #deployBackend
 #deployBackendService
+#exposeBackend
+
 #deployFrontend
 #deployFrontendService
 #exposeGuestbook
-exposeBackend
-#exposeRedisMaster
+
+#deployQueue
 
 #ROUTE=$(obtainRoute frontend)
 #echo Frontend route: $ROUTE
