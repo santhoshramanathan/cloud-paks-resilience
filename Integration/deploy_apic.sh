@@ -35,7 +35,7 @@ function buildValues {
 
 function deployHelm {
   echo Deploying $NAME
-  helm install https://github.com/IBM/charts/raw/master/repo/entitled/ibm-apiconnect-icp4i-prod-1.0.3.tgz \
+  helm install https://github.com/IBM/charts/raw/master/repo/entitled/ibm-apiconnect-icp4i-prod-1.0.4.tgz \
     --name $NAME --tls -f /tmp/values.yaml
 }
 

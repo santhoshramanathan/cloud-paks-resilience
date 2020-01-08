@@ -1,4 +1,4 @@
-BASE_URL=https://raw.githubusercontent.com/patrocinio/guestbook/backend
+BASE_URL=https://https://github.com/patrocinio/guestbook/blob/redis_lock
 
 function createProject {
   oc new-project guestbook
@@ -59,22 +59,20 @@ function obtainRoute {
 #createProject
 
 oc project guestbook
-#deployRedisMaster
-#deployRedisMasterService
+deployRedisMaster
+deployRedisMasterService
 #exposeRedisMaster
 
-#deployRedisSlave
-#deployRedisSlaveService
+deployRedisSlave
+deployRedisSlaveService
 
 #deployBackend
 #deployBackendService
 #exposeBackend
 
-#deployFrontend
-#deployFrontendService
-#exposeGuestbook
-
-#deployQueue
+deployFrontend
+deployFrontendService
+exposeGuestbook
 
 #ROUTE=$(obtainRoute frontend)
 #echo Frontend route: $ROUTE
