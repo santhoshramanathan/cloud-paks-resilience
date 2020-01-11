@@ -1,6 +1,6 @@
 cloudAdministratorUsername: "admin"
 cloudIntegrationPlatformEndpoint: "*"
-cloudIntegrationPlatformNamespace: "integration2"
+cloudIntegrationPlatformNamespace: "integration"
 productionDeployment: true
 
 global:
