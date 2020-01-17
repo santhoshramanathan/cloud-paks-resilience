@@ -1,25 +1,38 @@
-NAMESPACE=zen
+#!/bin/bash
+#******************************************************************************
+# Licensed Materials - Property of IBM
+# (c) Copyright IBM Corporation 2019. All Rights Reserved.
+#
+# Note to U.S. Government Users Restricted Rights:
+# Use, duplication or disclosure restricted by GSA ADP Schedule
+# Contract with IBM Corp.
+#******************************************************************************
 
-DOCKER_REGISTRY="us.icr.io/release2_1_0_1_base"
-DOCKER_REGISTRY_USER="iamapikey"
-DOCKER_REGISTRY_PASS="XXX"
-SECRET_NAME="icp4d-anyuid-docker-pull"
+if [[ -z $1 ]]; then
+    echo "Usage: ./install-cp4data.sh <<namespace>>"
+    exit 1
+fi
+
+NAMESPACE=$1
+# Change the values below to match with your repository information
+DOCKER_REGISTRY="cp.icr.io/cp/cp4d"
+DOCKER_REGISTRY_USER="ekey"
+DOCKER_REGISTRY_PASS="27vwdif4IWJxOSA6sqDSTsABO9nEPwu574SRas-5utkz"
 
 oc create ns ${NAMESPACE}
+
 oc project ${NAMESPACE}
 
+oc create sa -n ${NAMESPACE} default
 oc create sa -n ${NAMESPACE} tiller
-oc create sa -n ${NAMESPACE} icpd-anyuid-sa
 
 # Add `deployer` serviceaccount to `system:deployer` role to allow the template kickstart
 oc -n ${NAMESPACE} adm policy add-role-to-user -z deployer system:deployer
 
 # Create the secrets to pull images from the docker repository
-oc delete secret ${SECRET_NAME}
-oc create secret docker-registry ${SECRET_NAME}  -n ${NAMESPACE} --docker-server=${DOCKER_REGISTRY} --docker-username=${DOCKER_REGISTRY_USER} --docker-password=${DOCKER_REGISTRY_PASS} --docker-email=cp4data@ibm.com
+oc create secret docker-registry icp4d-anyuid-docker-pull -n ${NAMESPACE} --docker-server=${DOCKER_REGISTRY} --docker-username=${DOCKER_REGISTRY_USER} --docker-password=${DOCKER_REGISTRY_PASS} --docker-email=cp4data@ibm.com
 oc secrets -n ${NAMESPACE} link default icp4d-anyuid-docker-pull --for=pull
-oc secrets -n ${NAMESPACE} link tiller icp4d-anyuid-docker-pull --for=pull
-oc secrets -n ${NAMESPACE} link icpd-anyuid-sa icp4d-anyuid-docker-pull --for=pull
+
 
 # Set the Security Context -  One scc is created for every namespace
 cat << EOF | oc apply -f -
@@ -62,12 +75,13 @@ volumes:
 - persistentVolumeClaim
 - projected
 - secret
+
 EOF
 
 # Give cluster-admin permission to the service accounts used on the installation
 oc adm policy add-cluster-role-to-user cluster-admin "system:serviceaccount:${NAMESPACE}:tiller"
 oc adm policy add-cluster-role-to-user cluster-admin "system:serviceaccount:${NAMESPACE}:default"
-oc adm policy add-cluster-role-to-user cluster-admin "system:serviceaccount:${NAMESPACE}:icpd-anyuid-sa"
+
 
 # Set the template for the catalog
 cat << EOF | oc apply -f -
@@ -76,15 +90,16 @@ apiVersion: template.openshift.io/v1
 kind: Template
 message: |-
   The following service(s) have been created in your project: ${NAMESPACE}.
+
         Username: admin
         Password: password
-        Go to the *Applications* menu and select *Routes* to view the Cloud Pak for Data URL.
+
   For more information about, see https://docs-icpdata.mybluemix.net/home.
 metadata:
   name: cp4data
   annotations:
     description: |-
-      IBM Cloud Pak for Data is a native cloud solution that enables you to put your data to work quickly and efficiently.
+      IBM® Cloud Pak for Data is a native cloud solution that enables you to put your data to work quickly and efficiently.
     openshift.io/display-name: Cloud Pak for Data
     openshift.io/documentation-url: https://docs-icpdata.mybluemix.net/home
     openshift.io/long-description: IBM Cloud Pak for Data is composed of pre-configured microservices that run on a multi-node IBM Cloud Private cluster. The microservices enable you to connect to your data sources so that you can catalog and govern, explore and profile, transform, and analyze your data from a single web application..
@@ -94,7 +109,6 @@ metadata:
 objects:
 - apiVersion: v1
   kind: DeploymentConfig
-  metadata:
   metadata:
     name: cp4data-installer
     annotations:
@@ -130,12 +144,12 @@ objects:
             value: ${DOCKER_REGISTRY_USER}
           - name: DOCKER_REGISTRY_PASS
             value: \${DOCKER_REGISTRY_PASS}
-          - name: NGINX_PORT_NUMBER
-            value: \${NGINX_PORT_NUMBER}
           - name: CONSOLE_ROUTE_PREFIX
             value: \${CONSOLE_ROUTE_PREFIX}
+          - name: CONSOLE_PASSWORD
+            value: \${CONSOLE_PASSWORD}
           name: cp4data-installer
-          image: "${DOCKER_REGISTRY}/cp4d-installer:v1"
+          image: "${DOCKER_REGISTRY}/cp4d-installer:v1.4"
           imagePullPolicy: Always
           resources:
             limits:
@@ -169,7 +183,12 @@ parameters:
 - description: Storage class name.
   displayName: StorageClass
   name: STORAGE_CLASS
-  value: "ibmc-file-retain-custom"
+  value: "glusterfs-storage"
+  required: true
+- description: This password can be changed after login on the CP4Data console
+  displayName: Console Password
+  name: CONSOLE_PASSWORD
+  value: "password"
   required: true
 
 EOF
