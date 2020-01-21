@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    volume.beta.kubernetes.io/storage-provisioner: netapp.io/trident
+  creationTimestamp: "2020-01-21T17:38:02Z"
+  finalizers:
+  - kubernetes.io/pvc-protection
+  labels:
+    app: iis-server
+    chart: ibm-iisee-zen-1.0.1
+    heritage: Tiller
+    release: data-ibm-iisee
+  name: data-ibm-iisee-sampledata-pvc
+  namespace: data
+  resourceVersion: "1260028"
+  selfLink: /api/v1/namespaces/data/persistentvolumeclaims/data-ibm-iisee-sampledata-pvc
+  uid: c64b9789-3c74-11ea-9ebd-fa30c011a46e
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Mi
+  storageClassName: ibmc-file-gold
+status:
+  phase: Pending
