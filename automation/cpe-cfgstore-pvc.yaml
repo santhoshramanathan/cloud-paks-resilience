@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cpe-cfgstore-pvc
+  name: cpecfgstore-pvc
 spec:
   accessModes:
   - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
-  volumeName: cpe-cfgstore-pv
-  storageClassName: cpe-cfgstore-pv
+  volumeName: cpecfgstore-pv
+  storageClassName: cpecfgstore-pv

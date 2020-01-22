@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: cpe-textext-pv
+  name: cpetextext-pv
 spec:
   accessModes:
   - ReadWriteMany
@@ -11,4 +11,4 @@ spec:
     path: /auto8
     server: 52.116.20.100
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: cpe-textext-pv
+  storageClassName: cpetextext-pv

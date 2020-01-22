@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: cpe-filestore-pv
+  name: cpefilestore-pv
 spec:
   accessModes:
   - ReadWriteMany
@@ -11,4 +11,4 @@ spec:
     path: /auto5
     server: 52.116.20.100
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: cpe-filestore-pv
+  storageClassName: cpefilestore-pv

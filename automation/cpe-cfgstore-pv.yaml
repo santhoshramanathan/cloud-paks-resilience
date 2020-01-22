@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: cpe-cfgstore-pv
+  name: cpecfgstore-pv
 spec:
   accessModes:
   - ReadWriteMany
@@ -11,4 +11,4 @@ spec:
     path: /auto4
     server: 52.116.20.100
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: cpe-cfgstore-pv
+  storageClassName: cpecfgstore-pv

@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cpe-textext-pvc
+  name: cpetextext-pvc
 spec:
   accessModes:
   - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
-  volumeName: cpe-textext-pv
-  storageClassName: cpe-textext-pv
+  volumeName: cpetextext-pv
+  storageClassName: cpetextext-pv

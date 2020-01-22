@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: cpelogstore-pv
+  name: cpetextextstore-pv
 spec:
   accessModes:
   - ReadWriteMany
   capacity:
     storage: 1Gi
   nfs:
-    path: /auto7
+    path: /auto15
     server: 52.116.20.100
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: cpelogstore-pv
+  storageClassName: cpetextextstore-pv
