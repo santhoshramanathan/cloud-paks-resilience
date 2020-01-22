@@ -8,4 +8,5 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: ontap
+  volumeName: css-indexstore-pv
+  storageClassName: css-indexstore-pv

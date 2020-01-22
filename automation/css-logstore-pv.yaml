@@ -8,7 +8,7 @@ spec:
   capacity:
     storage: 1Gi
   nfs:
-    path: /home/cfgstore/css/CSS_Server_log
-    server: <NFS_SERVER>
+    path: /auto12
+    server: 52.116.20.100
   persistentVolumeReclaimPolicy: Retain
   storageClassName: css-logstore-pv

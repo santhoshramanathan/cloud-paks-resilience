@@ -8,4 +8,5 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: ontap
+  volumeName: cpe-logstore-pv
+  storageClassName: cpe-logstore-pv

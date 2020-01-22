@@ -8,7 +8,7 @@ spec:
   capacity:
     storage: 1Gi
   nfs:
-    path: /home/cfgstore/cpe/configDropins/overrides
-    server: <NFS Server>
+    path: /auto4
+    server: 52.116.20.100
   persistentVolumeReclaimPolicy: Retain
   storageClassName: cpe-cfgstore-pv

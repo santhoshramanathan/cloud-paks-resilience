@@ -8,7 +8,7 @@ spec:
   capacity:
     storage: 1Gi
   nfs:
-    path: /home/cfgstore/cpe/bootstrap
-    server: <NFS Server>
+    path: /auto3
+    server: 52.116.20.100
   persistentVolumeReclaimPolicy: Retain
   storageClassName: cpe-bootstrap-pv

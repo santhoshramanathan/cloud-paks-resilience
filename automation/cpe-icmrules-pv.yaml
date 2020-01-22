@@ -8,7 +8,7 @@ spec:
   capacity:
     storage: 1Gi
   nfs:
-    path: /home/cfgstore/cpe/icmrules
-    server: <NFS Server>
+    path: /auto6
+    server: 52.116.20.100
   persistentVolumeReclaimPolicy: Retain
   storageClassName: cpe-icmrules-pv

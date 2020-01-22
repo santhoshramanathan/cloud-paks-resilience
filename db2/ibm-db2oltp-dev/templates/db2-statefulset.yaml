@@ -217,7 +217,7 @@ spec:
             command:
             - sh
             - -c
-            - su - $DB2INSTANCE  -c '/database/config/db2inst1/sqllib/bin/db2gcf -s'
+            - su - $DB2INSTANCE  -c 'DB2INSTANCE=db2inst1 /database/config/db2inst1/sqllib/bin/db2gcf -s'
         {{- if not .Values.hadr.enabled }}
           initialDelaySeconds: 810
         {{- else }}
@@ -230,7 +230,7 @@ spec:
             command:
             - sh
             - -c
-            - su - $DB2INSTANCE  -c '/database/config/db2inst1/sqllib/bin/db2gcf -s'
+            - su - $DB2INSTANCE  -c 'DB2INSTANCE=db2inst1 /database/config/db2inst1/sqllib/bin/db2gcf -s'
         {{- if not .Values.hadr.enabled }}
           initialDelaySeconds: 60
         {{- else }}

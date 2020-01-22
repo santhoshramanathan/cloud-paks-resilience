@@ -8,4 +8,5 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: ontap
+  volumeName: cmis-logstore-pv
+  storageClassName: cmis-logstore-pv
