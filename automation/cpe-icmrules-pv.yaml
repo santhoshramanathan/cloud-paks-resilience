@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cpe-icmrules-pv
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  nfs:
+    path: /home/cfgstore/cpe/icmrules
+    server: <NFS Server>
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: cpe-icmrules-pv
