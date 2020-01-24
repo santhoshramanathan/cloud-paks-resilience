@@ -9,6 +9,6 @@ spec:
     storage: 1Gi
   nfs:
     path: /auto10
-    server: 52.116.20.100
+    server: 52.116.20.102
   persistentVolumeReclaimPolicy: Retain
   storageClassName: css-icp-customstore

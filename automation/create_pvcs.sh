@@ -90,8 +90,8 @@ function cpe_cfgstore {
 }
 
 function cpeicmrulesstore {
-  oc delete -f ccpeicmrulesstore-pvc.yaml
-  oc delete -f ccpeicmrulesstore-pv.yaml
+  oc delete -f cpeicmrulesstore-pvc.yaml
+  oc delete -f cpeicmrulesstore-pv.yaml
   oc apply -f cpeicmrulesstore-pv.yaml
   oc apply -f cpeicmrulesstore-pvc.yaml
 }
@@ -117,20 +117,20 @@ function cpefnlogstore {
   oc apply -f cpefnlogstore-pvc.yaml
 }
 
-#cpe_cfgstore
-#cpe_logstore
-#cpe_filestore
-#cpe_bootstrap
-#cpe_textext
-#cpe_icmrules
-#css_cfgstore
-#css_tempstore
-#css_logstore
-#css_indexstore
-#css_icp_customstore
-#cmis_cfgstore
-#cmis_logstore
+cpe_cfgstore
+cpe_logstore
+cpe_filestore
+cpe_bootstrap
+cpe_textext
+cpe_icmrules
+css_cfgstore
+css_tempstore
+css_logstore
+css_indexstore
+css_icp_customstore
+cmis_cfgstore
+cmis_logstore
 cpeicmrulesstore
-#cpetextextstore
-#cpebootstrapstore
-#cpefnlogstore
+cpetextextstore
+cpebootstrapstore
+cpefnlogstore

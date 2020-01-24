@@ -3,6 +3,7 @@ export TILLER_NAMESPACE=tiller
 function prereq {
   cd /Users/edu/github/charts/stable/ibm-db2oltp-dev/ibm_cloud_pak/pak_extensions/prereqs/rhos
   ./createSCCandNS.sh --namespace automation
+  cd -
 }
 
 function addRepo {
@@ -28,8 +29,10 @@ function deployDb2 {
     --set image.tag=latest
 }
 
-#prereq
-#addRepo
-#grantTillerPermission
-#grantHostPathPermission
+oc project automation
+
+prereq
+addRepo
+grantTillerPermission
+grantHostPathPermission
 deployDb2
