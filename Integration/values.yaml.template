@@ -9,7 +9,7 @@ global:
   createCrds: true
   storageClass: ibmc-block-gold
   mode: "dev"
-  routingType: ""
+  routingType: "route"
   certSecret: ""
   extraValuesConfig: ""
 
