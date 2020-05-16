@@ -1,0 +1,80 @@
+# Licensed Materials - Property of IBM
+# IBM Cloud Pak for Integration
+# @ Copyright IBM Corp. 2019 All Rights Reserved
+# US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+
+---
+
+# Nodes selected to run common services components.
+#
+# The value of the master, proxy, and management parameters is an array,
+# by providing multiple nodes the common services will be configured in
+# a high availability configuration.
+#
+# It is recommended to install the components onto one or more openshift
+# worker nodes. The master, proxy, and management components can all share
+# the same node or set of nodes.
+cluster_nodes:
+  master:
+    - 10.148.110.232
+  proxy:
+    - 10.148.110.232
+  management:
+    - 10.148.110.232
+
+# This storage class is used to store persistent data for the common services
+# components
+storage_class: ibmc-block-gold
+
+## You can set a different storage class for storing log data.
+## By default it will use the value of storage_class.
+# elasticsearch_storage_class:
+
+# These settings enable the installer to install common services from the IBM
+# Entitled Registry. You will need to supply your entitlement key as described
+# at https://github.com/ibm/charts
+private_registry_enabled: true
+image_repo: cp.icr.io/cp/icp-foundation
+docker_username: cp
+docker_password: <your entitled registry key>
+
+default_admin_password: password
+password_rules:
+- '(.*)'
+
+roks_enabled: true
+roks_url: https://c100-e.us-east.containers.cloud.ibm.com:32245
+roks_user_prefix: "IAM#"
+private_registry_enabled: true
+image_repo: cp.icr.io/cp/icp-foundation
+docker_username: cp
+docker_password: your_entitlement_key_here
+
+management_services:
+  # Common services
+  iam-policy-controller: enabled
+  metering: enabled
+  licensing: disabled
+  monitoring: enabled
+  nginx-ingress: enabled
+  common-web-ui: enabled
+  catalog-ui: enabled
+  mcm-kui: enabled
+  logging: enabled
+  audit-logging: disabled
+  system-healthcheck-service: disabled
+  multitenancy-enforcement: disabled
+  configmap-watcher: disabled
+
+# This section installs the IBM Cloud Pak for Integration Platform Navigator.
+# The navigator will be available after installation at:
+# https://ibm-icp4i-prod-integration.<openshift apps domain>/
+archive_addons:
+  icp4i:
+    namespace: integration
+    repo: local-charts
+    path: icp4icontent/IBM-Cloud-Pak-for-Integration-3.1.0.tgz
+
+    charts:
+      - name: ibm-icp4i-prod
+        values: {}
