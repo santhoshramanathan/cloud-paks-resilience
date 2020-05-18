@@ -33,11 +33,6 @@ storage_class: ibmc-block-gold
 # These settings enable the installer to install common services from the IBM
 # Entitled Registry. You will need to supply your entitlement key as described
 # at https://github.com/ibm/charts
-private_registry_enabled: true
-image_repo: cp.icr.io/cp/icp-foundation
-docker_username: cp
-docker_password: <your entitled registry key>
-
 default_admin_password: password
 password_rules:
 - '(.*)'
@@ -48,7 +43,7 @@ roks_user_prefix: "IAM#"
 private_registry_enabled: true
 image_repo: cp.icr.io/cp/icp-foundation
 docker_username: cp
-docker_password: your_entitlement_key_here
+docker_password: ENTITLEMENT
 
 management_services:
   # Common services

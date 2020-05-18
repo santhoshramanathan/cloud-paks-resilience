@@ -8,7 +8,7 @@ function loadEntitlement {
 }
 
 function logToDocker {
-  echo Logging in to Docker repository
+  echo Logging in to Docker repository using password $ENTITLEMENT
   docker login cp.icr.io --username cp --password $ENTITLEMENT
 }
 
@@ -31,16 +31,16 @@ function createKubeConfig {
 
 function copyConfig {
   ECHO Copying config file to `pwd`
-  cp $CURDIR/config.yaml .
+  sed s/ENTITLEMENT/$ENTITLEMENT/g < $CURDIR/config.yaml > config.yaml
 }
 
 function uninstall {
-sudo docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z -v /var/run:/var/run:z -v /etc/docker:/etc/docker:z --security-opt label:disable \
+  docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z -v /var/run:/var/run:z -v /etc/docker:/etc/docker:z --security-opt label:disable \
   ibmcom/icp-inception-amd64:3.2.4 uninstall-addon -vvv | tee output.txt
 }
 
 function install {
-  sudo docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z -v /var/run:/var/run:z -v /etc/docker:/etc/docker:z --security-opt label:disable \
+  docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z -v /var/run:/var/run:z -v /etc/docker:/etc/docker:z --security-opt label:disable \
     ibmcom/icp-inception-amd64:3.2.4 addon -vvv | tee output.txt
 }
 
@@ -58,7 +58,7 @@ cd installer_files/cluster
 # Notice you always need to create the kubeconfig file
 createKubeConfig
 
-#copyConfig
+copyConfig
 
-uninstall
+#uninstall
 install
