@@ -34,22 +34,31 @@ function copyConfig {
   cp $CURDIR/config.yaml .
 }
 
+function uninstall {
+sudo docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z -v /var/run:/var/run:z -v /etc/docker:/etc/docker:z --security-opt label:disable \
+  ibmcom/icp-inception-amd64:3.2.4 uninstall-addon -vvv | tee output.txt
+}
+
 function install {
-  docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z -v /var/run:/var/run:z -v /etc/docker:/etc/docker:z --security-opt label:disable \
+  sudo docker run -t --net=host -e LICENSE=accept -v $(pwd):/installer/cluster:z -v /var/run:/var/run:z -v /etc/docker:/etc/docker:z --security-opt label:disable \
     ibmcom/icp-inception-amd64:3.2.4 addon -vvv | tee output.txt
 }
 
 CURDIR=`pwd`
 
-#loadEntitlement
-#logToDocker
+loadEntitlement
+logToDocker
 #extractPackge
 
 cd $WORK
 #loadToDocker
 
 cd installer_files/cluster
-# createKubeConfig#
+
+# Notice you always need to create the kubeconfig file
+createKubeConfig
+
 #copyConfig
 
+uninstall
 install
