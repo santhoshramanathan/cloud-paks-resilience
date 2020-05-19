@@ -60,5 +60,5 @@ createKubeConfig
 
 copyConfig
 
-#uninstall
+uninstall
 install
