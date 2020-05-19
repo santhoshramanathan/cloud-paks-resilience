@@ -16,11 +16,11 @@
 # the same node or set of nodes.
 cluster_nodes:
   master:
-    - 10.148.110.232
+    - 10.148.110.249
   proxy:
-    - 10.148.110.232
+    - 10.148.110.249
   management:
-    - 10.148.110.232
+    - 10.148.110.249
 
 # This storage class is used to store persistent data for the common services
 # components
