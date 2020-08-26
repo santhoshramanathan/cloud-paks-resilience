@@ -1,7 +1,7 @@
 NAME=$1
 PROJECT=mq
 SCC=ibm-anyuid-hostpath-scc
-IMAGE_SECRET=ibm-entitlement-key
+IMAGE_SECRET=prod-secret
 TLS_SECRET=ibm-mq-tls-secret
 
 function associateSCC {
