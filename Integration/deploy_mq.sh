@@ -42,7 +42,7 @@ associateSCC
 
 createTlsSecret
 
-ENTITLEMENT_KEY=$(download_pak-entitlement.sh show-key Integration)
+ENTITLEMENT_KEY=$(download_pak_entitlement.sh show-key Integration)
 echo Key: $ENTITLEMENT_KEY
 
 createImagePullSecret
