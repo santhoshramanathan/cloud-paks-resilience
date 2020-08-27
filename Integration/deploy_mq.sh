@@ -42,9 +42,9 @@ associateSCC
 
 createTlsSecret
 
-ENTITLEMENT_KEY=$(sh download_pak_entitlement.sh show-key Integration)
-echo Key: $ENTITLEMENT_KEY
+#ENTITLEMENT_KEY=$(sudo sh download_pak_entitlement.sh show-key Integration) \
+#echo Key: $ENTITLEMENT_KEY
 
-createImagePullSecret
+#createImagePullSecret
 
 deployHelm
